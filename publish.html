@@ -1,42 +1,151 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Publish Your Game | Games Lab</title>
+
+<link rel="icon" href="assets/logo.png">
 
 <style>
 
-body{
-    background:#0f172a;
-    color:white;
-    font-family:Arial,sans-serif;
-    text-align:center;
-    padding:50px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.box{
-    max-width:800px;
+body{
+    font-family:Segoe UI, Arial, sans-serif;
+    min-height:100vh;
+    color:white;
+
+    background:
+    radial-gradient(circle at top left,#7c3aed 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#2563eb 0%,transparent 35%),
+    linear-gradient(135deg,#0b1120,#0f172a);
+}
+
+.hero{
+
+    padding:80px 20px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:4rem;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:1.2rem;
+    opacity:.85;
+}
+
+.container{
+    max-width:1100px;
     margin:auto;
+    padding:20px;
+}
+
+.glass{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:25px;
+
     padding:30px;
 
-    background:rgba(255,255,255,.08);
-
-    border-radius:20px;
+    margin-bottom:25px;
 }
 
-h1{
-    color:#60a5fa;
+h2{
+    margin-bottom:15px;
+    color:#93c5fd;
 }
 
 .step{
-
-    margin:20px;
-
+    margin-top:15px;
     padding:15px;
-
+    border-radius:15px;
     background:rgba(255,255,255,.05);
+}
 
-    border-radius:12px;
+.email-box{
+
+    font-size:1.2rem;
+    margin-top:20px;
+
+    padding:20px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #3b82f6,
+    #8b5cf6
+    );
+
+    border-radius:18px;
+}
+
+.email-box a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.requirements{
+
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:15px;
+}
+
+.req{
+    background:rgba(255,255,255,.05);
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.req span{
+    font-size:2rem;
+    display:block;
+    margin-bottom:10px;
+}
+
+.button{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    padding:14px 24px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #3b82f6,
+    #8b5cf6
+    );
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:15px;
+}
+
+footer{
+
+    text-align:center;
+    padding:40px;
+    opacity:.7;
 }
 
 </style>
@@ -44,50 +153,134 @@ h1{
 
 <body>
 
-<div class="box">
+<section class="hero">
 
 <h1>🛠️ Publish Your Game</h1>
 
 <p>
-Want your game featured on Games Lab?
-Follow these easy steps.
+Built something awesome? Let's get it on Games Lab.
 </p>
 
+</section>
+
+<div class="container">
+
+<div class="glass">
+
+<h2>🚀 How To Get Featured</h2>
+
 <div class="step">
-<h2>Step 1</h2>
-<p>Create your game using HTML, CSS and JavaScript.</p>
+<b>Step 1</b><br>
+Create your game using HTML, CSS and JavaScript.
 </div>
 
 <div class="step">
-<h2>Step 2</h2>
-<p>Upload it to GitHub Pages.</p>
+<b>Step 2</b><br>
+Upload your game to GitHub Pages.
 </div>
 
 <div class="step">
-<h2>Step 3</h2>
-<p>Get your game's URL.</p>
+<b>Step 3</b><br>
+Test that your game loads and works correctly.
 </div>
 
 <div class="step">
-<h2>Step 4</h2>
-<p>Send Games Lab:</p>
+<b>Step 4</b><br>
+Send your game's information to Games Lab.
+</div>
+
+<div class="step">
+<b>Step 5</b><br>
+If approved, your game may be featured on the homepage.
+</div>
+
+</div>
+
+<div class="glass">
+
+<h2>📦 What To Send</h2>
+
+<div class="requirements">
+
+<div class="req">
+<span>🎮</span>
+Game Name
+</div>
+
+<div class="req">
+<span>👤</span>
+Creator Name
+</div>
+
+<div class="req">
+<span>🖼️</span>
+Game Logo
+</div>
+
+<div class="req">
+<span>🔗</span>
+Game Link
+</div>
+
+<div class="req">
+<span>📝</span>
+Short Description
+</div>
+
+<div class="req">
+<span>⭐</span>
+Optional Screenshot
+</div>
+
+</div>
+
+</div>
+
+<div class="glass">
+
+<h2>📧 Submit Your Game</h2>
 
 <p>
-🎮 Game Name<br>
-👤 Creator Name<br>
-🖼️ Logo<br>
-🔗 Game Link
+When your game is ready, send all the details to:
 </p>
+
+<div class="email-box">
+
+📨<br><br>
+
+<a href="mailto:gameslabenquiries@gmail.com">
+gameslabenquiries@gmail.com
+</a>
+
 </div>
 
-<div class="step">
-<h2>Step 5</h2>
+<p style="margin-top:20px;">
+We review all submissions and may feature them on Games Lab.
+</p>
+
+</div>
+
+<div class="glass" style="text-align:center;">
+
+<h2>🎮 Ready To Build?</h2>
+
 <p>
-If approved, your game will be featured on Games Lab.
+Create. Publish. Share.
 </p>
+
+<a href="index.html" class="button">
+⬅ Back To Games Lab
+</a>
+
 </div>
 
 </div>
+
+<footer>
+
+🎮 Games Lab • Play. Create. Discover.
+
+</footer>
 
 </body>
 </html>
