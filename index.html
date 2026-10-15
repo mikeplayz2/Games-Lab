@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🎮 Games Lab</title>
+
+<link rel="icon" href="logo.png">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Inter,Segoe UI,sans-serif;
+    color:white;
+
+    background:
+    radial-gradient(circle at top left,#6d28d9 0%,transparent 40%),
+    radial-gradient(circle at bottom right,#2563eb 0%,transparent 40%),
+    linear-gradient(135deg,#050816,#0f172a);
+
+    overflow-x:hidden;
+}
+
+/* Floating blur orbs */
+
+.orb{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.3;
+    pointer-events:none;
+}
+
+.orb1{
+    width:300px;
+    height:300px;
+    background:#9333ea;
+    top:-100px;
+    left:-100px;
+}
+
+.orb2{
+    width:400px;
+    height:400px;
+    background:#2563eb;
+    bottom:-150px;
+    right:-100px;
+}
+
+.orb3{
+    width:250px;
+    height:250px;
+    background:#06b6d4;
+    top:50%;
+    left:50%;
+}
+
+nav{
+
+    width:95%;
+    max-width:1300px;
+
+    margin:20px auto;
+
+    padding:18px 30px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo img{
+    width:45px;
+    height:45px;
+}
+
+.logo h1{
+    font-size:1.5rem;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    opacity:.8;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    opacity:1;
+}
+
+.hero{
+
+    max-width:1200px;
+
+    margin:80px auto;
+
+    text-align:center;
+
+    padding:20px;
+}
+
+.hero h2{
+
+    font-size:4rem;
+
+    line-height:1.1;
+
+    margin-bottom:20px;
+}
+
+.hero p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    font-size:1.2rem;
+
+    opacity:.8;
+
+    margin-bottom:35px;
+}
+
+.play-btn{
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:15px 35px;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #6366f1,
+    #8b5cf6
+    );
+
+    box-shadow:
+    0 10px 40px
+    rgba(99,102,241,.4);
+
+    transition:.3s;
+}
+
+.play-btn:hover{
+    transform:translateY(-3px);
+}
+
+.section{
+
+    width:95%;
+    max-width:1300px;
+
+    margin:50px auto;
+}
+
+.section-title{
+
+    font-size:2rem;
+
+    margin-bottom:20px;
+}
+
+.games-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+}
+
+.card{
+
+    background:
+    rgba(255,255,255,.08);
+
+    backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:28px;
+
+    padding:25px;
+
+    transition:.3s;
+}
+
+.card:hover{
+
+    transform:
+    translateY(-8px);
+
+    box-shadow:
+    0 20px 40px
+    rgba(0,0,0,.35);
+}
+
+.game-icon{
+
+    font-size:3rem;
+
+    margin-bottom:15px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+
+    opacity:.8;
+
+    margin-bottom:20px;
+}
+
+.play-game{
+
+    display:inline-block;
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:10px 18px;
+
+    border-radius:15px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #3b82f6,
+    #9333ea
+    );
+}
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(200px,1fr));
+
+    gap:20px;
+
+    margin-top:25px;
+}
+
+.stat{
+
+    text-align:center;
+
+    padding:25px;
+
+    background:
+    rgba(255,255,255,.08);
+
+    backdrop-filter:blur(25px);
+
+    border-radius:25px;
+
+    border:1px solid rgba(255,255,255,.15);
+}
+
+.stat h2{
+
+    color:#60a5fa;
+
+    font-size:2rem;
+}
+
+footer{
+
+    margin-top:80px;
+
+    padding:30px;
+
+    text-align:center;
+
+    opacity:.7;
+}
+
+</style>
+</head>
+<body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<nav>
+
+<div class="logo">
+
+<img src="logo.png" alt="Games Lab">
+
+<h1>🎮 Games Lab</h1>
+
+</div>
+
+<div class="nav-links">
+
+<a href="#">Home</a>
+<a href="#games">Games</a>
+<a href="#stats">Stats</a>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<h2>
+Discover Cool Games
+</h2>
+
+<p>
+Games Lab is a collection of browser games, passion projects,
+experiments and community creations.
+Play instantly with no downloads.
+</p>
+
+<a href="#games" class="play-btn">
+Browse Games
+</a>
+
+</section>
+
+<section class="section" id="games">
+
+<h2 class="section-title">
+🔥 Featured Games
+</h2>
+
+<div class="games-grid">
+
+<div class="card">
+
+<div class="game-icon">
+🎃
+</div>
+
+<h3>Gold Empire Clicker</h3>
+
+<p>
+Build a spooky Halloween empire and become the Pumpkin King.
+</p>
+
+<a href="games/gold-empire/" class="play-game">
+Play Now
+</a>
+
+</div>
+
+<div class="card">
+
+<div class="game-icon">
+👻
+</div>
+
+<h3>Coming Soon</h3>
+
+<p>
+A new experimental game is brewing in the lab.
+</p>
+
+<a href="#" class="play-game">
+Soon
+</a>
+
+</div>
+
+<div class="card">
+
+<div class="game-icon">
+🧪
+</div>
+
+<h3>Your Next Project</h3>
+
+<p>
+Create and publish your own games here.
+</p>
+
+<a href="#" class="play-game">
+Build
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="stats">
+
+<h2 class="section-title">
+📊 Games Lab Stats
+</h2>
+
+<div class="stats">
+
+<div class="stat">
+<h2>1</h2>
+<p>Published Games</p>
+</div>
+
+<div class="stat">
+<h2>∞</h2>
+<p>Ideas</p>
+</div>
+
+<div class="stat">
+<h2>100%</h2>
+<p>Made With Passion</p>
+</div>
+
+<div class="stat">
+<h2>24/7</h2>
+<p>Available</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+🎮 Games Lab • Play. Create. Discover.
+
+</footer>
+
+</body>
+</html>
