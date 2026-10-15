@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🚂 Haunted Railway</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    text-align:center;
+    color:white;
+
+    background:
+    linear-gradient(
+    180deg,
+    #050505,
+    #111827,
+    #1f2937
+    );
+
+    min-height:100vh;
+}
+
+h1{
+    color:#60a5fa;
+    text-shadow:0 0 20px #60a5fa;
+}
+
+.panel{
+    margin:20px auto;
+    max-width:900px;
+    padding:20px;
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,.2);
+}
+
+.train{
+    font-size:100px;
+    margin:20px;
+}
+
+#eventEmoji{
+    font-size:80px;
+}
+
+button{
+
+    margin:10px;
+
+    padding:15px 25px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    background:#2563eb;
+
+    color:white;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.stats{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+}
+
+.card{
+
+    background:rgba(255,255,255,.08);
+
+    padding:15px;
+
+    border-radius:15px;
+
+    min-width:150px;
+}
+
+#gameOver{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.9);
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🚂 Haunted Railway</h1>
+
+<div class="stats">
+
+<div class="card">
+<h3>Night</h3>
+<span id="night">1</span>
+</div>
+
+<div class="card">
+<h3>Score</h3>
+<span id="score">0</span>
+</div>
+
+<div class="card">
+<h3>Safety</h3>
+<span id="safety">5</span>
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="train">
+🚂
+</div>
+
+<h2 id="eventName">
+Waiting For Event...
+</h2>
+
+<div id="eventEmoji">
+👻
+</div>
+
+<p id="eventDescription">
+Keep the haunted railway running.
+</p>
+
+</div>
+
+<div class="panel">
+
+<button onclick="choice('stop')">
+🛑 Stop Train
+</button>
+
+<button onclick="choice('continue')">
+🚂 Continue
+</button>
+
+<button onclick="choice('inspect')">
+🔦 Inspect
+</button>
+
+</div>
+
+<div class="panel">
+
+<h2>📜 Log</h2>
+
+<div id="log">
+Welcome to Haunted Railway...
+</div>
+
+</div>
+
+<div id="gameOver">
+
+<h1>☠️ Railway Lost</h1>
+
+<h2>
+Final Score:
+<span id="finalScore"></span>
+</h2>
+
+<button onclick="location.reload()">
+Play Again
+</button>
+
+</div>
+
+<script>
+
+let score = 0;
+let safety = 5;
+let night = 1;
+
+const events = [
+
+{
+emoji:"👻",
+name:"Ghost Passenger",
+description:"A mysterious passenger appears.",
+correct:"inspect"
+},
+
+{
+emoji:"💀",
+name:"Skeleton Crossing",
+description:"Something is on the tracks!",
+correct:"stop"
+},
+
+{
+emoji:"🎃",
+name:"Pumpkin Landslide",
+description:"Pumpkins have rolled onto the tracks.",
+correct:"stop"
+},
+
+{
+emoji:"🦇",
+name:"Bat Swarm",
+description:"Bats are surrounding the train.",
+correct:"continue"
+},
+
+{
+emoji:"☠️",
+name:"Reaper Train",
+description:"Another train emerges from the fog.",
+correct:"inspect"
+}
+
+];
+
+let currentEvent;
+
+function updateUI(){
+
+document.getElementById(
+"score"
+).textContent = score;
+
+document.getElementById(
+"safety"
+).textContent = safety;
+
+document.getElementById(
+"night"
+).textContent = night;
+
+}
+
+function newEvent(){
+
+currentEvent =
+events[
+Math.floor(
+Math.random() * events.length
+)
+];
+
+document.getElementById(
+"eventEmoji"
+).textContent =
+currentEvent.emoji;
+
+document.getElementById(
+"eventName"
+).textContent =
+currentEvent.name;
+
+document.getElementById(
+"eventDescription"
+).textContent =
+currentEvent.description;
+
+}
+
+function log(text){
+
+document.getElementById(
+"log"
+).innerHTML =
+text + "<br><br>" +
+document.getElementById(
+"log"
+).innerHTML;
+
+}
+
+function choice(action){
+
+if(action === currentEvent.correct){
+
+score += 10;
+
+log(
+"✅ Correct decision! +10 Score"
+);
+
+}else{
+
+safety--;
+
+log(
+"❌ Bad decision! Safety Lost."
+);
+
+}
+
+if(score >= night * 50){
+
+night++;
+
+log(
+"🌙 Night " +
+night +
+" Reached!"
+);
+
+}
+
+updateUI();
+
+checkGame();
+
+newEvent();
+
+}
+
+function checkGame(){
+
+if(safety <= 0){
+
+document.getElementById(
+"finalScore"
+).textContent =
+score;
+
+document.getElementById(
+"gameOver"
+).style.display =
+"flex";
+
+}
+
+}
+
+updateUI();
+newEvent();
+
+</script>
+
+</body>
+</html>
