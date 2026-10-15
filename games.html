@@ -28,28 +28,39 @@ body{
 }
 
 .container{
-    max-width:1300px;
+    max-width:1400px;
     margin:auto;
     padding:40px 20px;
 }
 
+.back{
+    display:inline-block;
+    margin-bottom:25px;
+    text-decoration:none;
+    color:white;
+    opacity:.8;
+}
+
+.back:hover{
+    opacity:1;
+}
+
 h1{
     text-align:center;
-    margin-bottom:15px;
     font-size:3rem;
+    margin-bottom:10px;
 }
 
 .subtitle{
     text-align:center;
     opacity:.8;
-    margin-bottom:40px;
+    margin-bottom:50px;
 }
 
 .games{
     display:grid;
     grid-template-columns:
-    repeat(auto-fit,minmax(350px,1fr));
-
+    repeat(auto-fit,minmax(340px,1fr));
     gap:25px;
 }
 
@@ -65,24 +76,30 @@ h1{
     border-radius:25px;
 
     padding:25px;
+
+    transition:.3s;
+}
+
+.game-card:hover{
+
+    transform:
+    translateY(-6px);
+
+    box-shadow:
+    0 10px 30px
+    rgba(0,0,0,.3);
 }
 
 .logo{
-
     width:70px;
     height:70px;
-
     border-radius:15px;
-
     object-fit:cover;
-
     margin-bottom:15px;
 }
 
 .creator{
-
     color:#93c5fd;
-
     margin-top:10px;
     margin-bottom:15px;
 }
@@ -97,6 +114,8 @@ h1{
 
     padding:12px 20px;
 
+    margin-top:15px;
+
     border-radius:15px;
 
     background:
@@ -107,15 +126,23 @@ h1{
     );
 }
 
-.back{
+.badge{
 
     display:inline-block;
 
-    margin-bottom:25px;
+    background:#22c55e;
 
-    text-decoration:none;
+    padding:5px 10px;
 
-    color:white;
+    border-radius:999px;
+
+    font-size:.8rem;
+
+    margin-bottom:12px;
+}
+
+.featured{
+    background:#f59e0b;
 }
 
 </style>
@@ -131,69 +158,139 @@ h1{
 <h1>🎮 Games Library</h1>
 
 <p class="subtitle">
-Browse games submitted to Games Lab.
+Explore every game currently available on Games Lab.
 </p>
 
 <div class="games">
 
-<!-- GAME 1 -->
+<!-- GOLD EMPIRE -->
 
 <div class="game-card">
+
+<div class="badge featured">
+⭐ FEATURED
+</div>
+
+<br><br>
 
 <img
 src="assets/logo.png"
 class="logo">
 
-<h2>Gold Empire Clicker</h2>
+<h2>🎃 Gold Empire Clicker</h2>
 
 <p class="creator">
 By Michael
 </p>
 
 <p>
-Build a spooky Halloween empire,
-collect gold and grow your kingdom.
+Build a spooky Halloween empire, collect gold,
+find rare items and become the Pumpkin King.
 </p>
-
-<br>
 
 <a
 href="games/gold-empire/"
 class="play">
-
 Play Game
-
 </a>
 
 </div>
 
-<!-- ADD FUTURE GAMES UNDER HERE -->
+<!-- GHOST HUNTER -->
 
 <div class="game-card">
+
+<div class="badge">
+🆕 NEW
+</div>
+
+<br><br>
 
 <img
 src="assets/logo.png"
 class="logo">
 
-<h2>Coming Soon</h2>
+<h2>👻 Ghost Hunter</h2>
 
 <p class="creator">
-By Future Creator
+By Games Lab
 </p>
 
 <p>
-This space is waiting for the next
-awesome game.
+Ghosts, skeletons and reapers are everywhere.
+Click them before they escape and beat your high score.
 </p>
 
-<br>
+<a
+href="games/ghost-hunter/"
+class="play">
+Play Game
+</a>
+
+</div>
+
+<!-- HAUNTED RAILWAY -->
+
+<div class="game-card">
+
+<div class="badge">
+🆕 NEW
+</div>
+
+<br><br>
+
+<img
+src="assets/logo.png"
+class="logo">
+
+<h2>🚂 Haunted Railway</h2>
+
+<p class="creator">
+By Games Lab
+</p>
+
+<p>
+Control a railway through haunted territory.
+Make the right choices and survive the night.
+</p>
 
 <a
-href="#"
+href="games/haunted-railway/"
 class="play">
+Play Game
+</a>
 
-Coming Soon
+</div>
 
+<!-- DOOMWAYS -->
+
+<div class="game-card">
+
+<div class="badge">
+🆕 NEW
+</div>
+
+<br><br>
+
+<img
+src="assets/logo.png"
+class="logo">
+
+<h2>🚪 DOOMWAYS</h2>
+
+<p class="creator">
+By Michael
+</p>
+
+<p>
+Open mysterious doors, collect coins, find keys
+and survive whatever lurks in the darkness.
+</p>
+
+<a
+href="games/doomways/"
+class="play">
+Play Game
 </a>
 
 </div>
@@ -204,3 +301,4 @@ Coming Soon
 
 </body>
 </html>
+``
