@@ -1,1 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Games | Games Lab</title>
+
+<link rel="icon" href="assets/logo.png">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Segoe UI,sans-serif;
+    color:white;
+
+    background:
+    radial-gradient(circle at top left,#7c3aed 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#2563eb 0%,transparent 35%),
+    linear-gradient(135deg,#050816,#0f172a);
+}
+
+.container{
+    max-width:1300px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:15px;
+    font-size:3rem;
+}
+
+.subtitle{
+    text-align:center;
+    opacity:.8;
+    margin-bottom:40px;
+}
+
+.games{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(350px,1fr));
+
+    gap:25px;
+}
+
+.game-card{
+
+    background:
+    rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:25px;
+
+    padding:25px;
+}
+
+.logo{
+
+    width:70px;
+    height:70px;
+
+    border-radius:15px;
+
+    object-fit:cover;
+
+    margin-bottom:15px;
+}
+
+.creator{
+
+    color:#93c5fd;
+
+    margin-top:10px;
+    margin-bottom:15px;
+}
+
+.play{
+
+    display:inline-block;
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:12px 20px;
+
+    border-radius:15px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #3b82f6,
+        #9333ea
+    );
+}
+
+.back{
+
+    display:inline-block;
+
+    margin-bottom:25px;
+
+    text-decoration:none;
+
+    color:white;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<a href="index.html" class="back">
+⬅ Back To Games Lab
+</a>
+
+<h1>🎮 Games Library</h1>
+
+<p class="subtitle">
+Browse games submitted to Games Lab.
+</p>
+
+<div class="games">
+
+<!-- GAME 1 -->
+
+<div class="game-card">
+
+<img
+src="assets/logo.png"
+class="logo">
+
+<h2>Gold Empire Clicker</h2>
+
+<p class="creator">
+By Michael
+</p>
+
+<p>
+Build a spooky Halloween empire,
+collect gold and grow your kingdom.
+</p>
+
+<br>
+
+<a
+href="games/gold-empire/"
+class="play">
+
+Play Game
+
+</a>
+
+</div>
+
+<!-- ADD FUTURE GAMES UNDER HERE -->
+
+<div class="game-card">
+
+<img
+src="assets/logo.png"
+class="logo">
+
+<h2>Coming Soon</h2>
+
+<p class="creator">
+By Future Creator
+</p>
+
+<p>
+This space is waiting for the next
+awesome game.
+</p>
+
+<br>
+
+<a
+href="#"
+class="play">
+
+Coming Soon
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
