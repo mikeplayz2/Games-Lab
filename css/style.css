@@ -1,0 +1,280 @@
+/* ==========================
+   GAMES LAB HALLOWEEN 2026
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:'Segoe UI',sans-serif;
+    color:white;
+
+    background:
+    radial-gradient(circle at top left,#ff6a00 0%,transparent 25%),
+    radial-gradient(circle at bottom right,#7c3aed 0%,transparent 30%),
+    linear-gradient(
+        135deg,
+        #0a0502,
+        #1a0d00,
+        #120909
+    );
+}
+
+/* ANNOUNCEMENT BAR */
+
+.announcement{
+
+    background:
+    linear-gradient(
+        90deg,
+        #ff6a00,
+        #ff9500,
+        #ff6a00
+    );
+
+    color:white;
+
+    text-align:center;
+
+    padding:12px;
+
+    font-weight:bold;
+
+    font-size:1rem;
+
+    box-shadow:
+    0 4px 20px rgba(255,120,0,.4);
+}
+
+/* NAVBAR */
+
+nav{
+
+    width:95%;
+
+    max-width:1300px;
+
+    margin:20px auto;
+
+    padding:18px 30px;
+
+    border-radius:30px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:
+    rgba(255,255,255,.07);
+
+    backdrop-filter:blur(20px);
+
+    border:
+    1px solid rgba(255,255,255,.15);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo img{
+    width:55px;
+    height:55px;
+    border-radius:15px;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+
+    color:#ffb84d;
+
+    text-shadow:
+    0 0 15px orange;
+}
+
+/* TITLE */
+
+h1{
+
+    color:#ff9d00;
+
+    text-shadow:
+    0 0 10px orange,
+    0 0 25px #ff6a00;
+}
+
+/* GLASS CARDS */
+
+.game-card,
+.card,
+.panel{
+
+    background:
+    rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:25px;
+
+    border:
+    1px solid rgba(255,255,255,.15);
+
+    transition:.3s;
+}
+
+.game-card:hover,
+.card:hover{
+
+    transform:
+    translateY(-8px);
+
+    box-shadow:
+    0 15px 35px
+    rgba(255,140,0,.25);
+}
+
+/* BUTTONS */
+
+.play,
+.button{
+
+    display:inline-block;
+
+    padding:12px 22px;
+
+    text-decoration:none;
+
+    color:white;
+
+    border-radius:15px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff6a00,
+        #ff9d00
+    );
+
+    box-shadow:
+    0 5px 20px
+    rgba(255,120,0,.3);
+
+    transition:.3s;
+}
+
+.play:hover,
+.button:hover{
+
+    transform:
+    scale(1.05);
+}
+
+/* BADGES */
+
+.badge{
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    font-size:.8rem;
+
+    background:
+    #ff6a00;
+
+    color:white;
+}
+
+.featured{
+
+    background:
+    linear-gradient(
+        135deg,
+        gold,
+        orange
+    );
+
+    color:black;
+}
+
+/* SPOOKY BATS */
+
+.bat{
+
+    position:fixed;
+
+    font-size:35px;
+
+    opacity:.4;
+
+    pointer-events:none;
+
+    animation:
+    fly 18s linear infinite;
+}
+
+@keyframes fly{
+
+    from{
+        transform:
+        translateX(-200px);
+    }
+
+    to{
+        transform:
+        translateX(120vw);
+    }
+}
+
+/* PUMPKIN GLOW */
+
+.pumpkin{
+
+    animation:
+    pulse 2s infinite;
+}
+
+@keyframes pulse{
+
+    50%{
+
+        text-shadow:
+        0 0 20px orange;
+
+        transform:
+        scale(1.05);
+    }
+}
+
+/* FOOTER */
+
+footer{
+
+    margin-top:80px;
+
+    padding:25px;
+
+    text-align:center;
+
+    opacity:.75;
+}
