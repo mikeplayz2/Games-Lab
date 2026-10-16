@@ -28,7 +28,7 @@ body{
     linear-gradient(135deg,#050816,#0f172a);
 }
 
-/* NAV */
+/* NAVIGATION */
 
 nav{
 
@@ -45,11 +45,11 @@ nav{
 
     padding:18px 30px;
 
+    border-radius:25px;
+
     background:rgba(255,255,255,.08);
 
     backdrop-filter:blur(25px);
-
-    border-radius:25px;
 
     border:1px solid rgba(255,255,255,.15);
 }
@@ -74,7 +74,7 @@ nav{
 
 .logo h1{
 
-    font-size:1.4rem;
+    font-size:1.5rem;
 }
 
 .nav-links{
@@ -86,9 +86,9 @@ nav{
 
 .nav-links a{
 
-    color:white;
-
     text-decoration:none;
+
+    color:white;
 
     opacity:.85;
 }
@@ -98,7 +98,7 @@ nav{
     opacity:1;
 }
 
-/* CONTAINER */
+/* MAIN */
 
 .container{
 
@@ -109,64 +109,66 @@ nav{
     padding:20px;
 }
 
-/* DOOMWAYS HERO */
+/* ANNOUNCEMENT */
 
-.hero{
+.banner{
+
+    margin-bottom:40px;
 
     padding:40px;
 
     border-radius:30px;
 
-    margin-bottom:40px;
-
     background:
     linear-gradient(
-    135deg,
-    rgba(239,68,68,.15),
-    rgba(124,58,237,.2)
+        135deg,
+        rgba(59,130,246,.25),
+        rgba(147,51,234,.25)
     );
 
     backdrop-filter:blur(25px);
 
-    border:1px solid rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.15);
 }
 
-.hero-badge{
+.banner-badge{
 
     display:inline-block;
 
-    background:#ef4444;
-
-    padding:8px 15px;
+    padding:8px 14px;
 
     border-radius:999px;
 
-    margin-bottom:20px;
+    background:#22c55e;
+
+    margin-bottom:15px;
+
+    font-size:.8rem;
 }
 
-.hero h2{
+.banner h2{
 
-    font-size:4rem;
+    font-size:3rem;
 
     margin-bottom:15px;
 }
 
-.hero p{
+.banner p{
+
+    opacity:.85;
 
     max-width:700px;
-
-    opacity:.8;
 
     margin-bottom:25px;
 }
 
-.play-btn{
+.banner-button{
 
     display:inline-block;
 
-    padding:14px 25px;
+    padding:14px 24px;
 
-    border-radius:16px;
+    border-radius:15px;
 
     text-decoration:none;
 
@@ -174,9 +176,9 @@ nav{
 
     background:
     linear-gradient(
-    135deg,
-    #3b82f6,
-    #9333ea
+        135deg,
+        #3b82f6,
+        #9333ea
     );
 }
 
@@ -197,14 +199,14 @@ nav{
 
     border-radius:18px;
 
-    color:white;
-
     background:rgba(255,255,255,.08);
 
     backdrop-filter:blur(20px);
+
+    color:white;
 }
 
-/* SECTIONS */
+/* HEADINGS */
 
 .section-title{
 
@@ -215,51 +217,77 @@ nav{
     font-size:2rem;
 }
 
-/* CARDS */
+/* GAME LIST */
 
-.games{
+.game-list{
 
-    display:grid;
+    display:flex;
 
-    grid-template-columns:
-    repeat(auto-fit,minmax(320px,1fr));
+    flex-direction:column;
 
-    gap:25px;
+    gap:20px;
 }
 
-.card{
+.game{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
 
     padding:25px;
 
     border-radius:25px;
 
-    background:
-    rgba(255,255,255,.08);
+    background:rgba(255,255,255,.08);
 
     backdrop-filter:blur(20px);
 
     border:1px solid rgba(255,255,255,.15);
 
-    transition:.3s;
+    transition:.transform:translateY(-4px);
 }
 
-.card:hover{
+.game img{
 
-    transform:
-    translateY(-8px);
+    width:90px;
+
+    height:90px;
+
+    border-radius:20px;
+
+    object-fit:cover;
+}
+
+.game-content{
+
+    flex:1;
+}
+
+.game h3{
+
+    margin-bottom:10px;
+}
+
+.creator{
+
+    color:#93c5fd;
+
+    margin-bottom:10px;
 }
 
 .badge{
 
     display:inline-block;
 
-    padding:6px 12px;
+    padding:5px 12px;
 
     border-radius:999px;
 
-    font-size:.8rem;
+    margin-bottom:10px;
 
-    margin-bottom:15px;
+    font-size:.8rem;
 
     background:#22c55e;
 }
@@ -269,140 +297,15 @@ nav{
     background:#f59e0b;
 }
 
-.logo-game{
-
-    width:70px;
-    height:70px;
-
-    border-radius:15px;
-
-    margin-bottom:15px;
-
-    object-fit:cover;
-}
-
-.creator{
-
-    color:#93c5fd;
-
-    margin:10px 0;
-}
-
 .play{
 
-    display:inline-block;
+    text-decoration:none;
 
-    margin-top:15px;
+    color:white;
 
     padding:12px 18px;
 
-    border-radius:15px;
-
-    text-decoration:none;
-
-    color:white;
-
-    background:
-    linear-gradient(
-    135deg,
-    #3b82f6,
-    #9333ea
-    );
-}
-
-.community{
-
-    padding:20px;
-
-    border-radius:20px;
-
-    margin-top:50px;
-
-    margin-bottom:25px;
-
-    background:
-    linear-gradient(
-    135deg,
-    rgba(59,130,246,.2),
-    rgba(147,51,234,.2)
-    );
-
-    backdrop-filter:blur(20px);
-
-    .announcement{
-
-    max-width:1400px;
-
-    margin:20px auto 40px auto;
-
-    padding:40px;
-
-    border-radius:30px;
-
-    background:
-    linear-gradient(
-        135deg,
-        rgba(59,130,246,.25),
-        rgba(147,51,234,.25)
-    );
-
-    backdrop-filter:blur(30px);
-
-    border:1px solid rgba(255,255,255,.1);
-
-    overflow:hidden;
-
-}
-
-.announcement-badge{
-
-    display:inline-block;
-
-    padding:8px 15px;
-
-    border-radius:999px;
-
-    background:#22c55e;
-
-    margin-bottom:20px;
-
-    font-size:.85rem;
-
-    font-weight:bold;
-
-}
-
-.announcement h2{
-
-    font-size:3.5rem;
-
-    margin-bottom:15px;
-
-}
-
-.announcement p{
-
-    max-width:700px;
-
-    opacity:.85;
-
-    margin-bottom:25px;
-
-    font-size:1.05rem;
-
-}
-
-.announcement-button{
-
-    display:inline-block;
-
-    padding:14px 24px;
-
-    border-radius:16px;
-
-    text-decoration:none;
-
-    color:white;
+    border-radius:14px;
 
     background:
     linear-gradient(
@@ -410,14 +313,67 @@ nav{
         #3b82f6,
         #9333ea
     );
-
-    transition:.3s;
-
 }
 
-.announcement-button:hover{
+/* COMMUNITY HEADER */
 
-    transform:translateY(-4px);
+.community{
+
+    margin-top:50px;
+
+    margin-bottom:20px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(59,130,246,.15),
+        rgba(147,51,234,.15)
+    );
+
+    backdrop-filter:blur(20px);
+}
+
+.community p{
+
+    opacity:.8;
+
+    margin-top:10px;
+}
+
+/* FOOTER */
+
+.footer{
+
+    margin-top:60px;
+
+    text-align:center;
+
+    opacity:.7;
+
+    padding:30px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.game{
+
+    flex-direction:column;
+
+    text-align:center;
+}
+
+nav{
+
+    flex-direction:column;
+
+    gap:15px;
+}
 
 }
 
@@ -431,7 +387,7 @@ nav{
 
 <div class="logo">
 
-<img src="assets/logo.png">
+assets/logo.png
 
 <h1>🎮 Games Lab</h1>
 
@@ -449,143 +405,144 @@ nav{
 
 <div class="container">
 
-<!-- HERO -->
+<div class="banner">
 
-<div class="announcement">
-
-    <div class="announcement-content">
-
-        <div class="announcement-badge">
-            ❄️ FEATURED GAME
-        </div>
-
-        <h2>Snow Rider 3D</h2>
-
-        <p>
-            Race down snowy mountains, dodge obstacles and see how long you can survive.
-            One of the most popular games on Games Lab right now.
-        </p>
-
-        <a
-        href="games/snow-runner-3d/"
-        class="announcement-button">
-
-        Play Snow Rider 3D
-
-        </a>
-
-    </div>
+<div class="banner-badge">
+📢 ANNOUNCEMENT
 </div>
 
-<!-- SEARCH -->
+<h2>❄️ Snow Rider 3D Featured</h2>
+
+<p>
+Race down snowy mountains, avoid obstacles and see how far you can survive.
+One of the most played games on Games Lab right now.
+</p>
+
+games/snow-runner-3d/
+Play Now
+</a>
+
+</div>
 
 <div class="search">
 
-<input
-type="text"
-placeholder="🔎 Search Games (Coming Soon)">
+<input type="text" placeholder="🔎 Search Games (Coming Soon)">
 
 </div>
-
-<!-- ORIGINALS -->
 
 <h2 class="section-title">
 🔥 Games Lab Originals
 </h2>
 
-<div class="games">
+<div class="game-list">
 
-<!-- GOLD EMPIRE -->
+<div class="game">
 
-<div class="card">
+assets/logo.png
+
+<div class="game-content">
 
 <div class="badge featured">
 ⭐ FEATURED
 </div>
 
-<h2>🎃 Gold Empire Clicker</h2>
+<h3>🎃 Gold Empire Clicker</h3>
 
-<p class="creator">
+<div class="creator">
 By Michael
-</p>
+</div>
 
 <p>
-Build your Halloween empire, collect rare rewards and become the Pumpkin King.
+Build a Halloween empire, collect rare items and become the Pumpkin King.
 </p>
 
-<a href="games/gold-empire/" class="play">
+</div>
+
+games/gold-empire/
 Play
 </a>
 
 </div>
 
-<!-- GHOST -->
+<div class="game">
 
-<div class="card">
+assets/logo.png
+
+<div class="game-content">
 
 <div class="badge">
 🆕 NEW
 </div>
 
-<h2>👻 Ghost Hunter</h2>
+<h3>👻 Ghost Hunter</h3>
 
-<p class="creator">
+<div class="creator">
 By Games Lab
-</p>
+</div>
 
 <p>
-Hunt ghosts, skeletons and reapers before they escape.
+Click ghosts before they escape and beat your high score.
 </p>
 
-<a href="games/ghost-hunter/" class="play">
+</div>
+
+games/ghost-hunter/
 Play
 </a>
 
 </div>
 
-<!-- RAILWAY -->
+<div class="game">
 
-<div class="card">
+assets/logo.png
+
+<div class="game-content">
 
 <div class="badge">
 🆕 NEW
 </div>
 
-<h2>🚂 Haunted Railway</h2>
+<h3>🚂 Haunted Railway</h3>
 
-<p class="creator">
+<div class="creator">
 By Games Lab
-</p>
+</div>
 
 <p>
-Control a haunted railway and survive increasingly dangerous nights.
+Control a haunted railway and survive terrifying night events.
 </p>
 
-<a href="games/haunted-railway/" class="play">
+</div>
+
+games/haunted-railway/
 Play
 </a>
 
 </div>
 
-<!-- DOOMWAYS -->
+<div class="game">
 
-<div class="card">
+assets/logo.png
+
+<div class="game-content">
 
 <div class="badge">
 🚪 ALPHA
 </div>
 
-<h2>🚪 DOOMWAYS</h2>
+<h3>🚪 DOOMWAYS</h3>
 
-<p class="creator">
+<div class="creator">
 By Michael
-</p>
+</div>
 
 <p>
-Explore endless rooms, collect coins, find keys and survive lurking entities.
+Open doors, find loot, survive entities and journey into the darkness.
 </p>
 
-<a href="games/doomways/" class="play">
+</div>
+
+games/doomways/
 Play
 </a>
 
@@ -593,99 +550,110 @@ Play
 
 </div>
 
-<!-- COMMUNITY -->
-
 <div class="community">
 
-<h2>
-🌎 Community Picks
-</h2>
+<h2>🌎 Community Picks</h2>
 
 <p>
-Recommended games from around the web.
-</p>
+Great games recommended by the Games Lab community.</p>
 
 </div>
 
-<div class="games">
+<div class="game-list">
 
-<div class="card">
+<div class="game">
+
+assets/pokerogue.png
+
+<div class="game-content">
 
 <div class="badge featured">
 🔥 POPULAR
 </div>
 
-<h2>⚡ PokéRogue</h2>
+<h3>⚡ PokéRogue</h3>
 
-<p class="creator">
+<div class="creator">
 By Pagefault Games
-</p>
+</div>
 
 <p>
-A fan-made Pokémon roguelike featuring endless runs and permanent progression.
+A fan-made Pokémon roguelike adventure with endless progression.
 </p>
 
-<a
-href="https://pokerogue.net/"
-target="_blank"
-class="play">
+</div>
 
+<a href="https://pokerogue.net/" target="_blank" class="play">
 Play
-
 </a>
 
 </div>
 
-<div class="card">
+<div class="game">
+
+assets/slope.png
+
+<div class="game-content">
 
 <div class="badge">
-🔥 POPULAR
+🔥 HOT
 </div>
 
-<h2>⛷️ Slope</h2>
+<h3>⛷️ Slope</h3>
 
-<p class="creator">
+<div class="creator">
 Community Game
-</p>
+</div>
 
 <p>
-Roll down an endless futuristic slope and avoid obstacles.
+Roll down an endless futuristic slope while avoiding obstacles.
 </p>
 
-<a
-href="games/slope/"
-class="play">
+</div>
 
+games/slope/
 Play
-
 </a>
 
 </div>
 
-<div class="card">
+<div class="game">
 
-<div class="badge">
-🔥 POPULAR
+assets/snowrider.png
+
+<div class="game-content">
+
+<div class="badge featured">
+❄️ FEATURED
 </div>
 
-<h2>⛷️ Snow Runner 3D</h2>
+<h3>Snow Rider 3D</h3>
 
-<p class="creator">
+<div class="creator">
 Community Game
-</p>
+</div>
 
 <p>
-Roll down an endless christmas themed slope and avoid obstacles.
+Race through snowy mountains and survive as long as possible.
 </p>
 
-<a
-href="games/snow-runner-3d/"
-class="play">
+</div>
 
+games/snow-runner-3d/
 Play
-
 </a>
 
 </div>
 
-<p
+</div>
+
+<div class="footer">
+
+🎮 Games Lab • Play. Create. Discover.
+
+</div>
+
+</div>
+
+</body>
+</html>
