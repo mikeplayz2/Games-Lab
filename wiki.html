@@ -1,1 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📚 Games Lab Wiki</title>
+
+<link rel="icon" href="assets/logo.png">
+
+<style>
+
+html{
+    scroll-behavior:smooth;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Segoe UI,sans-serif;
+    color:white;
+
+    background:
+    radial-gradient(circle at top left,#7c3aed 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#2563eb 0%,transparent 35%),
+    linear-gradient(135deg,#050816,#0f172a);
+
+}
+
+/* NAV */
+
+nav{
+
+    width:95%;
+    max-width:1400px;
+
+    margin:20px auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 30px;
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+}
+
+.logo{
+
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+}
+
+.logo img{
+
+    width:50px;
+    height:50px;
+
+    border-radius:12px;
+
+}
+
+.nav-links{
+
+    display:flex;
+    gap:20px;
+
+}
+
+.nav-links a{
+
+    text-decoration:none;
+    color:white;
+
+}
+
+/* MAIN */
+
+.container{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:20px;
+
+}
+
+/* HERO */
+
+.hero{
+
+    padding:50px;
+
+    border-radius:30px;
+
+    margin-bottom:30px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(59,130,246,.25),
+        rgba(147,51,234,.25)
+    );
+
+    backdrop-filter:blur(25px);
+
+}
+
+.hero h1{
+
+    font-size:3.5rem;
+
+    margin-bottom:15px;
+
+}
+
+.hero p{
+
+    max-width:800px;
+
+    opacity:.85;
+
+    line-height:1.6;
+
+}
+
+/* SUBMIT */
+
+.submit{
+
+    margin-top:30px;
+
+    padding:30px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+}
+
+.submit h2{
+
+    margin-bottom:15px;
+
+}
+
+/* QUICK NAV */
+
+.quick-nav{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+    margin:40px 0;
+
+}
+
+.quick-nav a{
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:12px 18px;
+
+    border-radius:999px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #3b82f6,
+        #9333ea
+    );
+
+}
+
+/* ARTICLES */
+
+.article{
+
+    margin-bottom:40px;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.article h2{
+
+    margin-bottom:15px;
+
+    font-size:2rem;
+
+}
+
+.article h3{
+
+    margin-top:20px;
+
+    margin-bottom:10px;
+
+}
+
+.article p,
+.article li{
+
+    opacity:.9;
+
+    line-height:1.8;
+
+}
+
+.article ul{
+
+    margin-left:20px;
+    margin-top:10px;
+
+}
+
+/* FOOTER */
+
+.footer{
+
+    text-align:center;
+
+    padding:40px;
+
+    opacity:.7;
+
+}
+
+@media(max-width:900px){
+
+    nav{
+
+        flex-direction:column;
+
+        gap:15px;
+
+    }
+
+    .hero h1{
+
+        font-size:2.2rem;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+
+<img src="assets/logo.png">
+
+<h2>🎮 Games Lab</h2>
+
+</div>
+
+<div class="nav-links">
+
+<a href="index.html">🏠 Home</a>
+<a href="games.html">🎮 Games</a>
+<a href="news.html">📰 News</a>
+<a href="wiki.html">📚 Wiki</a>
+<a href="publish.html">📤 Publish</a>
+
+</div>
+
+</nav>
+
+<div class="container">
+
+<div class="hero">
+
+<h1>📚 Games Lab Wiki</h1>
+
+<p>
+Welcome to the Games Lab Wiki. Explore detailed information about some of the most popular games, platforms and gaming experiences. New articles are constantly being added.
+</p>
+
+</div>
+
+<div class="submit">
+
+<h2>📨 Submit A Wiki Entry</h2>
+
+<p>
+Want a game added to the Games Lab Wiki?
+</p>
+
+<br>
+
+<p>
+📧 gameslabenquiries@gmail.com
+</p>
+
+<br>
+
+<p>
+⚠️ Include <strong>Wiki</strong> in the email subject.
+</p>
+
+<br>
+
+<p>
+Example:
+</p>
+
+<br>
+
+<p>
+Wiki - Minecraft<br>
+Wiki - Pokémon Unite<br>
+Wiki - Stardew Valley
+</p>
+
+</div>
+
+<div class="quick-nav">
+
+<a href="#minecraft">🟩 Minecraft</a>
+<a href="#roblox">🧱 Roblox</a>
+<a href="#pokerogue">⚡ PokéRogue</a>
+<a href="#terraria">🌳 Terraria</a>
+<a href="#fnaf">🧸 FNAF</a>
+<a href="#doors">🚪 DOORS</a>
+
+</div>
+
+<div class="article" id="minecraft">
+
+<h2>🟩 Minecraft</h2>
+
+<p>
+Minecraft is a sandbox game developed by Mojang Studios. Players explore procedurally generated worlds made of blocks and can gather resources, craft tools, build structures and survive against hostile creatures.
+</p>
+
+<h3>🎮 Gameplay</h3>
+
+<p>
+Players can choose between Survival, Creative, Adventure and Hardcore modes. Survival requires managing hunger, resources and hostile mobs, while Creative provides unlimited access to blocks and items.
+</p>
+
+<h3>⭐ Key Features</h3>
+
+<ul>
+<li>Near infinite worlds</li>
+<li>Building and engineering systems</li>
+<li>Redstone automation</li>
+<li>Massive modding scene</li>
+<li>Cross-platform multiplayer</li>
+</ul>
+
+</div>
+
+<div class="article" id="roblox">
+
+<h2>🧱 Roblox</h2>
+
+<p>
+Roblox is a platform that allows users to create, share and play experiences built by millions of developers around the world.
+</p>
+
+<h3>🎮 Popular Experiences</h3>
+
+<ul>
+<li>DOORS</li>
+<li>Blox Fruits</li>
+<li>Brookhaven RP</li>
+<li>Dress To Impress</li>
+<li>Tower of Hell</li>
+</ul>
+
+<h3>🛠 Roblox Studio</h3>
+
+<p>
+Roblox Studio allows developers to create games using Lua scripting, custom models and built-in tools.
+</p>
+
+</div>
+
+<div class="article" id="pokerogue">
+
+<h2>⚡ PokéRogue</h2>
+
+<p>
+PokéRogue is a browser-based Pokémon-inspired roguelike. Players attempt endless runs while building powerful teams and unlocking permanent progression.
+</p>
+
+<h3>🎮 Gameplay</h3>
+
+<p>
+Runs become progressively harder as opponents scale. Strategic team building and resource management are critical.
+</p>
+
+<h3>⭐ Features</h3>
+
+<ul>
+<li>Endless progression</li>
+<li>Huge roster</li>
+<li>Roguelike mechanics2>
+
+<p>
+Terraria is a sandbox action-adventure game featuring exploration, combat, building and progression through increasingly challenging boss fights.
+</p>
+
+<h3>⚔ Combat</h3>
+
+<p>
+Players can specialise in melee, ranged, magic or summoner classes.
+</p>
+
+<h3>👑 Bosses</h3>
+
+<ul>
+<li>Eye of Cthulhu</li>
+<li>Skeletron</li>
+<li>Moon Lord</li>
+<li>Plantera</li>
+</ul>
+
+</div>
+
+<div class="article" id="fnaf">
+
+<h2>🧸 Five Nights at Freddy's</h2>
+
+<p>
+Five Nights at Freddy's is a horror franchise known for animatronic characters and survival-based gameplay.
+</p>
+
+<h3>👀 Gameplay</h3>
+
+<p>
+Players monitor security systems while managing limited resources to survive the night.
+</p>
+
+<h3>🎮 Main Series</h3>
+
+<ul>
+<li>Five Nights at Freddy's</li>
+<li>FNAF 2</li>
+<li>FNAF 3</li>
+<li>FNAF 4</li>
+<li>Security Breach</li>
+</ul>
+
+</div>
+
+<div class="article" id="doors">
+
+<h2>🚪 DOORS</h2>
+
+<p>
+DOORS is a Roblox horror game where players progress through increasingly dangerous rooms while avoiding powerful entities.
+</p>
+
+<h3>👻 Entities</h3>
+
+<ul>
+<li>Rush</li>
+<li>Ambush</li>
+<li>Seek</li>
+<li>Figure</li>
+<li>Eyes</li>
+</ul>
+
+<h3>🔦 Survival</h3>
+
+<p>
+Players use keys, lockpicks, flashlights and environmental clues to continue deeper into the hotel.
+</p>
+
+</div>
+
+<div class="footer">
+
+🎮 Games Lab Wiki • Learn. Discover. Explore.
+
+</div>
+
+</div>
+
+</body>
+</html>
