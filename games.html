@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Games | Games Lab</title>
+<title>🎮 Games Library | Games Lab</title>
 
 <link rel="icon" href="assets/logo.png">
 
@@ -27,44 +28,210 @@ body{
     linear-gradient(135deg,#050816,#0f172a);
 }
 
-.container{
+/* NAV */
+
+nav{
+
+    width:95%;
     max-width:1400px;
-    margin:auto;
-    padding:40px 20px;
+
+    margin:20px auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 30px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(25px);
+
+    border-radius:25px;
+
+    border:1px solid rgba(255,255,255,.15);
 }
 
-.back{
-    display:inline-block;
-    margin-bottom:25px;
-    text-decoration:none;
-    color:white;
-    opacity:.8;
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
 }
 
-.back:hover{
-    opacity:1;
+.logo img{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:12px;
 }
 
-h1{
-    text-align:center;
-    font-size:3rem;
-    margin-bottom:10px;
+.logo h1{
+
+    font-size:1.4rem;
 }
 
-.subtitle{
-    text-align:center;
-    opacity:.8;
-    margin-bottom:50px;
-}
+.nav-links{
 
-.games{
-    display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(340px,1fr));
+    display:flex;
+
     gap:25px;
 }
 
-.game-card{
+.nav-links a{
+
+    color:white;
+
+    text-decoration:none;
+
+    opacity:.85;
+}
+
+.nav-links a:hover{
+
+    opacity:1;
+}
+
+/* CONTAINER */
+
+.container{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:20px;
+}
+
+/* DOOMWAYS HERO */
+
+.hero{
+
+    padding:40px;
+
+    border-radius:30px;
+
+    margin-bottom:40px;
+
+    background:
+    linear-gradient(
+    135deg,
+    rgba(239,68,68,.15),
+    rgba(124,58,237,.2)
+    );
+
+    backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.hero-badge{
+
+    display:inline-block;
+
+    background:#ef4444;
+
+    padding:8px 15px;
+
+    border-radius:999px;
+
+    margin-bottom:20px;
+}
+
+.hero h2{
+
+    font-size:4rem;
+
+    margin-bottom:15px;
+}
+
+.hero p{
+
+    max-width:700px;
+
+    opacity:.8;
+
+    margin-bottom:25px;
+}
+
+.play-btn{
+
+    display:inline-block;
+
+    padding:14px 25px;
+
+    border-radius:16px;
+
+    text-decoration:none;
+
+    color:white;
+
+    background:
+    linear-gradient(
+    135deg,
+    #3b82f6,
+    #9333ea
+    );
+}
+
+/* SEARCH */
+
+.search{
+
+    margin-bottom:40px;
+}
+
+.search input{
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:18px;
+
+    color:white;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+}
+
+/* SECTIONS */
+
+.section-title{
+
+    margin-top:40px;
+
+    margin-bottom:20px;
+
+    font-size:2rem;
+}
+
+/* CARDS */
+
+.games{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
+
+    gap:25px;
+}
+
+.card{
+
+    padding:25px;
+
+    border-radius:25px;
 
     background:
     rgba(255,255,255,.08);
@@ -73,109 +240,170 @@ h1{
 
     border:1px solid rgba(255,255,255,.15);
 
-    border-radius:25px;
-
-    padding:25px;
-
     transition:.3s;
 }
 
-.game-card:hover{
+.card:hover{
 
     transform:
-    translateY(-6px);
-
-    box-shadow:
-    0 10px 30px
-    rgba(0,0,0,.3);
-}
-
-.logo{
-    width:70px;
-    height:70px;
-    border-radius:15px;
-    object-fit:cover;
-    margin-bottom:15px;
-}
-
-.creator{
-    color:#93c5fd;
-    margin-top:10px;
-    margin-bottom:15px;
-}
-
-.play{
-
-    display:inline-block;
-
-    text-decoration:none;
-
-    color:white;
-
-    padding:12px 20px;
-
-    margin-top:15px;
-
-    border-radius:15px;
-
-    background:
-    linear-gradient(
-        135deg,
-        #3b82f6,
-        #9333ea
-    );
+    translateY(-8px);
 }
 
 .badge{
 
     display:inline-block;
 
-    background:#22c55e;
-
-    padding:5px 10px;
+    padding:6px 12px;
 
     border-radius:999px;
 
     font-size:.8rem;
 
-    margin-bottom:12px;
+    margin-bottom:15px;
+
+    background:#22c55e;
 }
 
 .featured{
+
     background:#f59e0b;
 }
 
+.logo-game{
+
+    width:70px;
+    height:70px;
+
+    border-radius:15px;
+
+    margin-bottom:15px;
+
+    object-fit:cover;
+}
+
+.creator{
+
+    color:#93c5fd;
+
+    margin:10px 0;
+}
+
+.play{
+
+    display:inline-block;
+
+    margin-top:15px;
+
+    padding:12px 18px;
+
+    border-radius:15px;
+
+    text-decoration:none;
+
+    color:white;
+
+    background:
+    linear-gradient(
+    135deg,
+    #3b82f6,
+    #9333ea
+    );
+}
+
+.community{
+
+    padding:20px;
+
+    border-radius:20px;
+
+    margin-top:50px;
+
+    margin-bottom:25px;
+
+    background:
+    linear-gradient(
+    135deg,
+    rgba(59,130,246,.2),
+    rgba(147,51,234,.2)
+    );
+
+    backdrop-filter:blur(20px);
+}
+
 </style>
+
 </head>
+
 <body>
+
+<nav>
+
+<div class="logo">
+
+<img src="assets/logo.png">
+
+<h1>🎮 Games Lab</h1>
+
+</div>
+
+<div class="nav-links">
+
+<a href="index.html">Home</a>
+<a href="games.html">Games</a>
+<a href="publish.html">Publish</a>
+
+</div>
+
+</nav>
 
 <div class="container">
 
-<a href="index.html" class="back">
-⬅ Back To Games Lab
+<!-- HERO -->
+
+<div class="hero">
+
+<div class="hero-badge">
+🚪 FEATURED GAME
+</div>
+
+<h2>DOOMWAYS</h2>
+
+<p>
+Open mysterious doors, collect loot, survive dangerous entities
+and see how far into the darkness you can make it.
+</p>
+
+<a href="games/doomways/" class="play-btn">
+Play DOOMWAYS
 </a>
 
-<h1>🎮 Games Library</h1>
+</div>
 
-<p class="subtitle">
-Explore every game currently available on Games Lab.
-</p>
+<!-- SEARCH -->
+
+<div class="search">
+
+<input
+type="text"
+placeholder="🔎 Search Games (Coming Soon)">
+
+</div>
+
+<!-- ORIGINALS -->
+
+<h2 class="section-title">
+🔥 Games Lab Originals
+</h2>
 
 <div class="games">
 
 <!-- GOLD EMPIRE -->
 
-<div class="game-card">
+<div class="card">
 
 <div class="badge featured">
 ⭐ FEATURED
 </div>
-
-<br><br>
-
-<img
-src="assets/logo.png"
-class="logo">
 
 <h2>🎃 Gold Empire Clicker</h2>
 
@@ -184,31 +412,22 @@ By Michael
 </p>
 
 <p>
-Build a spooky Halloween empire, collect gold,
-find rare items and become the Pumpkin King.
+Build your Halloween empire, collect rare rewards and become the Pumpkin King.
 </p>
 
-<a
-href="games/gold-empire/"
-class="play">
-Play Game
+<a href="games/gold-empire/" class="play">
+Play
 </a>
 
 </div>
 
-<!-- GHOST HUNTER -->
+<!-- GHOST -->
 
-<div class="game-card">
+<div class="card">
 
 <div class="badge">
 🆕 NEW
 </div>
-
-<br><br>
-
-<img
-src="assets/logo.png"
-class="logo">
 
 <h2>👻 Ghost Hunter</h2>
 
@@ -217,31 +436,22 @@ By Games Lab
 </p>
 
 <p>
-Ghosts, skeletons and reapers are everywhere.
-Click them before they escape and beat your high score.
+Hunt ghosts, skeletons and reapers before they escape.
 </p>
 
-<a
-href="games/ghost-hunter/"
-class="play">
-Play Game
+<a href="games/ghost-hunter/" class="play">
+Play
 </a>
 
 </div>
 
-<!-- HAUNTED RAILWAY -->
+<!-- RAILWAY -->
 
-<div class="game-card">
+<div class="card">
 
 <div class="badge">
 🆕 NEW
 </div>
-
-<br><br>
-
-<img
-src="assets/logo.png"
-class="logo">
 
 <h2>🚂 Haunted Railway</h2>
 
@@ -250,31 +460,22 @@ By Games Lab
 </p>
 
 <p>
-Control a railway through haunted territory.
-Make the right choices and survive the night.
+Control a haunted railway and survive increasingly dangerous nights.
 </p>
 
-<a
-href="games/haunted-railway/"
-class="play">
-Play Game
+<a href="games/haunted-railway/" class="play">
+Play
 </a>
 
 </div>
 
 <!-- DOOMWAYS -->
 
-<div class="game-card">
+<div class="card">
 
 <div class="badge">
-🆕 NEW
+🚪 ALPHA
 </div>
-
-<br><br>
-
-<img
-src="assets/logo.png"
-class="logo">
 
 <h2>🚪 DOOMWAYS</h2>
 
@@ -283,150 +484,110 @@ By Michael
 </p>
 
 <p>
-Open mysterious doors, collect coins, find keys
-and survive whatever lurks in the darkness.
+Explore endless rooms, collect coins, find keys and survive lurking entities.
 </p>
 
-<a
-href="games/doomways/"
-class="play">
-Play Game
+<a href="games/doomways/" class="play">
+Play
 </a>
 
 </div>
 
-<!-- BETA Empire Clicker -->
-
-<div class="game-card">
-
-<div class="badge">
-🆕 Beta
 </div>
 
-<br><br>
+<!-- COMMUNITY -->
 
-<img
-src="assets/empirebeta.png"
-class="logo">
-    
-<h2>BETA Gold Empire Clicker</h2>
+<div class="community">
 
-<p class="creator">
-By Horizon Game Studios
-</p>
-
-<p>
-The BETA Version of Gold Empire clicker! boo!
-</p>
-
-<a
-href="games/empire-clicker-beta/"
-class="play">
-Play Game
-</a>
-
-</div>
-
-<h2 class="section-title">
+<h2>
 🌎 Community Picks
 </h2>
 
-<!-- SLOPE -->
-<div class="game-card">
-
-    <div class="badge featured">
-        🔥 POPULAR
-    </div>
-
-    <br><br>
-
-    <img
-    src="assets/slope.png"
-    class="logo">
-
-    <h2>⛷️ Slope</h2>
-
-    <p class="creator">
-        By Cat Fool You (Github Repository)
-    </p>
-
-    <p>
-        Roll down an endless futuristic slope,
-        dodge obstacles, and see how long you can survive.
-    </p>
-
-    <a
-<a href="games/slope/" class="play">
-    Play Game
-</a>
-
-</div>
-
-<!-- Snow Runner -->
-
-<div class="game-card">
-
-<div class="badge">
-🔥 Recommended
-</div>
-
-<br><br>
-
-<img
-src="assets/snowrider.png"
-class="logo">
-
-<h2>Snow Runner 3D</h2>
-
-<p class="creator">
-By Saber Interactive
-</p>
-
 <p>
-Ride a snow board down a hill!
+Recommended games from around the web.
 </p>
 
-<a
-href="games/snow-runner-3d/"
-class="play">
-Play Game
-</a>
-
 </div>
 
-<div class="game-card">
+<div class="games">
 
-<div class="game-icon">
-⚡
+<div class="card">
+
+<div class="badge featured">
+🔥 POPULAR
 </div>
 
-<h2>PokéRogue</h2>
+<h2>⚡ PokéRogue</h2>
 
 <p class="creator">
 By Pagefault Games
 </p>
 
 <p>
-A fan-made Pokémon roguelike adventure featuring endless runs,
-team building, bosses and permanent progression.
+A fan-made Pokémon roguelike featuring endless runs and permanent progression.
 </p>
 
-<br>
-
-<a href="https://pokerogue.net/"
+<a
+href="https://pokerogue.net/"
 target="_blank"
 class="play">
 
-Play Game
+Play
 
 </a>
 
 </div>
-    
+
+<div class="card">
+
+<div class="badge">
+🔥 POPULAR
 </div>
+
+<h2>⛷️ Slope</h2>
+
+<p class="creator">
+Community Game
+</p>
+
+<p>
+Roll down an endless futuristic slope and avoid obstacles.
+</p>
+
+<a
+href="games/slope/"
+class="play">
+
+Play
+
+</a>
 
 </div>
 
-</body>
-</html>
-``
+<div class="card">
+
+<div class="badge">
+🔥 POPULAR
+</div>
+
+<h2>⛷️ Snow Runner 3D</h2>
+
+<p class="creator">
+Community Game
+</p>
+
+<p>
+Roll down an endless christmas themed slope and avoid obstacles.
+</p>
+
+<a
+href="games/snow-runner-3d/"
+class="play">
+
+Play
+
+</a>
+
+</div>
+
+<p
