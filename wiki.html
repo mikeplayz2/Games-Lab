@@ -275,6 +275,11 @@ nav{
 
     }
 
+</body>
+<button id="backToTop">
+⬆ Back To Top
+</button>
+    
 #backToTop{
 
     position:fixed;
@@ -320,6 +325,51 @@ nav{
     transform:translateY(-4px);
 
     }
+
+<script>
+
+const topButton =
+document.getElementById(
+"backToTop"
+);
+
+window.addEventListener(
+"scroll",
+function(){
+
+    if(
+        window.scrollY > 700
+    ){
+
+        topButton.style.display =
+        "block";
+
+    }else{
+
+        topButton.style.display =
+        "none";
+
+    }
+
+}
+);
+
+topButton.addEventListener(
+"click",
+function(){
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+}
+);
+
+</script>
     
 }
 
