@@ -22,7 +22,6 @@ html{
 }
 
 body{
-
     font-family:Segoe UI,sans-serif;
     color:white;
 
@@ -30,7 +29,24 @@ body{
     radial-gradient(circle at top left,#7c3aed 0%,transparent 35%),
     radial-gradient(circle at bottom right,#2563eb 0%,transparent 35%),
     linear-gradient(135deg,#050816,#0f172a);
+}
 
+/* Progress Bar */
+
+#progressBar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:0%;
+    height:4px;
+    z-index:9999;
+
+    background:
+    linear-gradient(
+        90deg,
+        #3b82f6,
+        #9333ea
+    );
 }
 
 /* NAV */
@@ -42,76 +58,56 @@ nav{
 
     margin:20px auto;
 
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
     padding:18px 30px;
 
-    border-radius:24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-    background:rgba(255,255,255,.08);
+    border-radius:25px;
 
     backdrop-filter:blur(25px);
 
-    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.08);
 
+    border:1px solid rgba(255,255,255,.15);
 }
 
 .logo{
-
     display:flex;
     align-items:center;
     gap:15px;
-
 }
 
 .logo img{
-
     width:50px;
     height:50px;
-
     border-radius:12px;
-
 }
 
 .nav-links{
-
     display:flex;
     gap:20px;
-
 }
 
 .nav-links a{
-
-    text-decoration:none;
     color:white;
-
+    text-decoration:none;
 }
-
-/* MAIN */
 
 .container{
-
     max-width:1400px;
-
     margin:auto;
-
     padding:20px;
-
 }
 
-/* HERO */
+/* Hero */
 
 .hero{
 
     padding:50px;
 
     border-radius:30px;
-
-    margin-bottom:30px;
 
     background:
     linear-gradient(
@@ -122,31 +118,28 @@ nav{
 
     backdrop-filter:blur(25px);
 
+    margin-bottom:30px;
 }
 
 .hero h1{
 
-    font-size:3.5rem;
+    font-size:3rem;
 
-    margin-bottom:15px;
-
+    margin-bottom:10px;
 }
 
 .hero p{
 
     max-width:800px;
 
-    opacity:.85;
+    line-height:1.8;
 
-    line-height:1.6;
-
+    opacity:.9;
 }
 
-/* SUBMIT */
+/* Submit */
 
 .submit{
-
-    margin-top:30px;
 
     padding:30px;
 
@@ -154,17 +147,35 @@ nav{
 
     background:rgba(255,255,255,.08);
 
-    backdrop-filter:blur(20px);
+    backdrop-filter:blur(25px);
 
+    margin-bottom:35px;
 }
 
-.submit h2{
+/* Search */
 
-    margin-bottom:15px;
+.search{
 
+    margin-bottom:35px;
 }
 
-/* QUICK NAV */
+.search input{
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    color:white;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,.08);
+}
+
+/* Quick Nav */
 
 .quick-nav{
 
@@ -174,8 +185,7 @@ nav{
 
     gap:15px;
 
-    margin:40px 0;
-
+    margin-bottom:40px;
 }
 
 .quick-nav a{
@@ -194,93 +204,53 @@ nav{
         #3b82f6,
         #9333ea
     );
-
 }
 
-/* ARTICLES */
+/* Article */
 
 .article{
 
-    margin-bottom:40px;
-
     padding:35px;
+
+    margin-bottom:25px;
 
     border-radius:25px;
 
-    background:rgba(255,255,255,.08);
+    background:
+    rgba(255,255,255,.08);
 
-    backdrop-filter:blur(20px);
-
-    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(25px);
 
 }
 
 .article h2{
 
     margin-bottom:15px;
-
-    font-size:2rem;
-
 }
 
 .article h3{
 
     margin-top:20px;
-
     margin-bottom:10px;
-
 }
 
-.article p,
-.article li{
-
-    opacity:.9;
+.article p{
 
     line-height:1.8;
-
+    opacity:.9;
 }
 
 .article ul{
 
     margin-left:20px;
     margin-top:10px;
-
 }
 
-/* FOOTER */
+/* Back Button */
 
-.footer{
-
-    text-align:center;
-
-    padding:40px;
-
-    opacity:.7;
-
-}
-
-@media(max-width:900px){
-
-    nav{
-
-        flex-direction:column;
-
-        gap:15px;
-
-    }
-
-    .hero h1{
-
-        font-size:2.2rem;
-
-    }
-
-</body>
-<button id="backToTop">
-⬆ Back To Top
-</button>
-    
 #backToTop{
+
+    display:none;
 
     position:fixed;
 
@@ -288,13 +258,13 @@ nav{
 
     right:25px;
 
-    padding:15px 20px;
-
     border:none;
 
-    border-radius:999px;
-
     cursor:pointer;
+
+    padding:15px 20px;
+
+    border-radius:999px;
 
     color:white;
 
@@ -307,70 +277,31 @@ nav{
         #9333ea
     );
 
-    backdrop-filter:blur(20px);
-
     box-shadow:
     0 0 25px rgba(124,58,237,.35);
 
-    display:none;
-
-    z-index:999;
-
-    transition:.3s;
-
 }
 
-#backToTop:hover{
+.footer{
 
-    transform:translateY(-4px);
+    text-align:center;
 
+    padding:40px;
+
+    opacity:.7;
+}
+
+@media(max-width:900px){
+
+    nav{
+        flex-direction:column;
+        gap:15px;
     }
 
-<script>
-
-const topButton =
-document.getElementById(
-"backToTop"
-);
-
-window.addEventListener(
-"scroll",
-function(){
-
-    if(
-        window.scrollY > 700
-    ){
-
-        topButton.style.display =
-        "block";
-
-    }else{
-
-        topButton.style.display =
-        "none";
-
+    .hero h1{
+        font-size:2rem;
     }
 
-}
-);
-
-topButton.addEventListener(
-"click",
-function(){
-
-    window.scrollTo({
-
-        top:0,
-
-        behavior:"smooth"
-
-    });
-
-}
-);
-
-</script>
-    
 }
 
 </style>
@@ -378,6 +309,8 @@ function(){
 </head>
 
 <body>
+
+<div id="progressBar"></div>
 
 <nav>
 
@@ -408,7 +341,9 @@ function(){
 <h1>📚 Games Lab Wiki</h1>
 
 <p>
-Welcome to the Games Lab Wiki. Explore detailed information about some of the most popular games, platforms and gaming experiences. New articles are constantly being added.
+The Games Lab Wiki is a growing gaming encyclopedia featuring
+popular games, gaming history, communities, mechanics, lore
+and development information.
 </p>
 
 </div>
@@ -430,58 +365,66 @@ Want a game added to the Games Lab Wiki?
 <br>
 
 <p>
-⚠️ Include <strong>Wiki</strong> in the email subject.
+⚠️ IMPORTANT: Include <strong>Wiki</strong> in the email subject.
 </p>
 
 <br>
 
 <p>
-Example:
+Examples:
 </p>
 
-<br>
+<ul>
+<li>Wiki - Minecraft</li>
+<li>Wiki - Stardew Valley</li>
+<li>Wiki - Hollow Knight</li>
+</ul>
 
-<p>
-Wiki - Minecraft<br>
-Wiki - Pokémon Unite<br>
-Wiki - Stardew Valley
-</p>
+</div>
+
+<div class="search">
+
+<input
+type="text"
+placeholder="🔍 Search Coming Soon">
 
 </div>
 
 <div class="quick-nav">
 
 <a href="#minecraft">🟩 Minecraft</a>
+
 <a href="#roblox">🧱 Roblox</a>
+
 <a href="#pokerogue">⚡ PokéRogue</a>
+
 <a href="#terraria">🌳 Terraria</a>
+
 <a href="#fnaf">🧸 FNAF</a>
+
 <a href="#doors">🚪 DOORS</a>
 
 </div>
 
-<div class="article" id="minecraft">
-
-<h2>🟩 Minecraft</h2>
-
-<p>
-Minecraft is a sandbox game developed by Mojang Studios. Players explore procedurally generated worlds made of blocks and can gather resources, craft tools, build structures and survive against hostile creatures.
+<div class="article" id="minecraftStudios,
+the game allows players to build, explore, survive and create almost anything
+inside procedurally generated worlds.
 </p>
 
 <h3>🎮 Gameplay</h3>
 
 <p>
-Players can choose between Survival, Creative, Adventure and Hardcore modes. Survival requires managing hunger, resources and hostile mobs, while Creative provides unlimited access to blocks and items.
+Minecraft features Survival Mode, Creative Mode, Adventure Mode and Hardcore
+Mode. Players gather resources, craft tools and explore huge worlds.
 </p>
 
-<h3>⭐ Key Features</h3>
+<h3>⭐ Famous Features</h3>
 
 <ul>
-<li>Near infinite worlds</li>
-<li>Building and engineering systems</li>
-<li>Redstone automation</li>
-<li>Massive modding scene</li>
-<li>Cross-platform multiplayer</li>
+<li>Redstone engineering</li>
+<li>Multiplayer servers</li>
+<li>Village systems</li>
+<li>Massive modding community</li>
 </ul>
 
 </div>
@@ -491,24 +434,19 @@ Players can choose between Survival, Creative, Adventure and Hardcore modes. Sur
 <h2>🧱 Roblox</h2>
 
 <p>
-Roblox is a platform that allows users to create, share and play experiences built by millions of developers around the world.
+Roblox is an online platform where users can create and play experiences.
+It is powered by Roblox Studio and a huge community of developers.
 </p>
 
-<h3>🎮 Popular Experiences</h3>
+<h3>🎮 Popular Games</h3>
 
 <ul>
 <li>DOORS</li>
 <li>Blox Fruits</li>
-<li>Brookhaven RP</li>
+<li>Brookhaven</li>
 <li>Dress To Impress</li>
-<li>Tower of Hell</li>
+<li>Tower Of Hell</li>
 </ul>
-
-<h3>🛠 Roblox Studio</h3>
-
-<p>
-Roblox Studio allows developers to create games using Lua scripting, custom models and built-in tools.
-</p>
 
 </div>
 
@@ -517,61 +455,54 @@ Roblox Studio allows developers to create games using Lua scripting, custom mode
 <h2>⚡ PokéRogue</h2>
 
 <p>
-PokéRogue is a browser-based Pokémon-inspired roguelike. Players attempt endless runs while building powerful teams and unlocking permanent progression.
-</p>
-
-<h3>🎮 Gameplay</h3>
-
-<p>
-Runs become progressively harder as opponents scale. Strategic team building and resource management are critical.
+PokéRogue is a browser-based Pokémon roguelike focused on endless runs,
+team building and permanent progression.
 </p>
 
 <h3>⭐ Features</h3>
 
 <ul>
-<li>Endless progression</li>
-<li>Huge roster</li>
-<li>Roguelike mechanics2>
+<li>Large Pokémon roster</li>
+<li>Permanent unlocks</li>
+<li>Roguelike gameplay</li>
+<li>Browser based</li>
+</ul>
+
+</div>
+
+<div class="article" id="terraria">
+
+<h2>🌳 Terraria</h2>
 
 <p>
-Terraria is a sandbox action-adventure game featuring exploration, combat, building and progression through increasingly challenging boss fights.
+Terraria is a sandbox adventure game featuring exploration, building,
+combat and boss progression.
 </p>
 
-<h3>⚔ Combat</h3>
-
-<p>
-Players can specialise in melee, ranged, magic or summoner classes.
-</p>
-
-<h3>👑 Bosses</h3>
+<h3>⚔ Classes</h3>
 
 <ul>
-<li>Eye of Cthulhu</li>
-<li>Skeletron</li>
-<li>Moon Lord</li>
-<li>Plantera</li>
+<li>Melee</li>
+<li>Ranged</li>
+<li>Mage</li>
+<li>Summoner</li>
 </ul>
 
 </div>
 
 <div class="article" id="fnaf">
 
-<h2>🧸 Five Nights at Freddy's</h2>
+<h2>🧸 Five Nights At Freddy's</h2>
 
 <p>
-Five Nights at Freddy's is a horror franchise known for animatronic characters and survival-based gameplay.
+Five Nights at Freddy's is a horror series centred around surviving nights
+against animatronic characters.
 </p>
 
-<h3>👀 Gameplay</h3>
-
-<p>
-Players monitor security systems while managing limited resources to survive the night.
-</p>
-
-<h3>🎮 Main Series</h3>
+<h3>🎮 Main Games</h3>
 
 <ul>
-<li>Five Nights at Freddy's</li>
+<li>FNAF 1</li>
 <li>FNAF 2</li>
 <li>FNAF 3</li>
 <li>FNAF 4</li>
@@ -585,10 +516,11 @@ Players monitor security systems while managing limited resources to survive the
 <h2>🚪 DOORS</h2>
 
 <p>
-DOORS is a Roblox horror game where players progress through increasingly dangerous rooms while avoiding powerful entities.
+DOORS is a Roblox horror game where players progress through rooms while
+avoiding dangerous entities.
 </p>
 
-<h3>👻 Entities</h3>
+<h3>👻 Known Entities</h3>
 
 <ul>
 <li>Rush</li>
@@ -598,21 +530,76 @@ DOORS is a Roblox horror game where players progress through increasingly danger
 <li>Eyes</li>
 </ul>
 
-<h3>🔦 Survival</h3>
-
-<p>
-Players use keys, lockpicks, flashlights and environmental clues to continue deeper into the hotel.
-</p>
-
 </div>
 
 <div class="footer">
 
-🎮 Games Lab Wiki • Learn. Discover. Explore.
+🎮 Games Lab Wiki • Learn • Discover • Explore
 
 </div>
 
 </div>
+
+<button id="backToTop">
+
+📖 Back To Top
+
+</button>
+
+<script>
+
+const topButton =
+document.getElementById(
+"backToTop"
+);
+
+window.addEventListener(
+"scroll",
+function(){
+
+    if(window.scrollY > 600){
+
+        topButton.style.display =
+        "block";
+
+    }else{
+
+        topButton.style.display =
+        "none";
+
+    }
+
+    const winScroll =
+    document.documentElement.scrollTop;
+
+    const height =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+
+    const scrolled =
+    (winScroll/height)*100;
+
+    document.getElementById(
+    "progressBar"
+    ).style.width =
+    scrolled + "%";
+
+}
+);
+
+topButton.onclick = function(){
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+};
+
+</script>
 
 </body>
 </html>
