@@ -328,6 +328,97 @@ nav{
     );
 
     backdrop-filter:blur(20px);
+
+    .announcement{
+
+    max-width:1400px;
+
+    margin:20px auto 40px auto;
+
+    padding:40px;
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(59,130,246,.25),
+        rgba(147,51,234,.25)
+    );
+
+    backdrop-filter:blur(30px);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    overflow:hidden;
+
+}
+
+.announcement-badge{
+
+    display:inline-block;
+
+    padding:8px 15px;
+
+    border-radius:999px;
+
+    background:#22c55e;
+
+    margin-bottom:20px;
+
+    font-size:.85rem;
+
+    font-weight:bold;
+
+}
+
+.announcement h2{
+
+    font-size:3.5rem;
+
+    margin-bottom:15px;
+
+}
+
+.announcement p{
+
+    max-width:700px;
+
+    opacity:.85;
+
+    margin-bottom:25px;
+
+    font-size:1.05rem;
+
+}
+
+.announcement-button{
+
+    display:inline-block;
+
+    padding:14px 24px;
+
+    border-radius:16px;
+
+    text-decoration:none;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #3b82f6,
+        #9333ea
+    );
+
+    transition:.3s;
+
+}
+
+.announcement-button:hover{
+
+    transform:translateY(-4px);
+
 }
 
 </style>
@@ -360,22 +451,30 @@ nav{
 
 <!-- HERO -->
 
-<div class="hero">
+<div class="announcement">
 
-<div class="hero-badge">
-🎯 FEATURED GAME
-</div>
+    <div class="announcement-content">
 
-<h2>Snow Runner 3D!</h2>
+        <div class="announcement-badge">
+            ❄️ FEATURED GAME
+        </div>
 
-<p>
-Go down a christmas themed slope, and avoid trees and other obsticles. Buy new sleds, collect presents and get your high score higher!
-</p>
+        <h2>Snow Rider 3D</h2>
 
-<a href="games/snow-runner-3d/" class="play-btn">
-Play Snow Runner 3D
-</a>
+        <p>
+            Race down snowy mountains, dodge obstacles and see how long you can survive.
+            One of the most popular games on Games Lab right now.
+        </p>
 
+        <a
+        href="games/snow-runner-3d/"
+        class="announcement-button">
+
+        Play Snow Rider 3D
+
+        </a>
+
+    </div>
 </div>
 
 <!-- SEARCH -->
