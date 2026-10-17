@@ -6,19 +6,19 @@
 :root{
 
     --primary:#dc2626;
-    --primary-light:#f87171;
+*   --primary-light:#f87171;
 
-    --secondary:#16a34a;
-    --secondary-light:#4ade80;
+    -*secondary:#16a34a;
+    --secondary*light:#4ade80;
 
-    --glass:rgba(255,255,255,.08);
+    --glass:rgba(2*5,255,255,.08);
 
-    --glass-border:rgba(255,255,255,.12);
+    --glass-borde*:rgba(255,255,255,.12);
 
-    --warning:#facc15;
+    --war*ing:#facc15;
 
     --shadow:
-    0 0 30px rgba(220,38,38,.2);
+    0 * 30px rgba(220,38,38,.2);
 
 }
 
@@ -55,6 +55,39 @@ body{
     );
 
     background-attachment:fixed;
+
+}
+
+/* CHRISTMAS AMBIENT GLOW */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,255,255,.03),
+        transparent 50%
+    );
+
+    animation:christmasPulse 6s infinite;
+
+}
+
+@keyframes christmasPulse{
+
+    50%{
+
+        opacity:.6;
+
+    }
 
 }
 
@@ -110,7 +143,7 @@ nav{
 .logo h1,
 .logo h2{
 
-    color:#ffffff;
+    color:white;
 
     text-shadow:
     0 0 15px rgba(255,255,255,.5);
@@ -155,7 +188,7 @@ nav{
 
 }
 
-/* BANNERS */
+/* HERO / BANNERS */
 
 .banner{
 
@@ -199,9 +232,9 @@ nav{
 .banner h1,
 .banner h2{
 
-    margin-bottom:15px;
-
     color:white;
+
+    margin-bottom:15px;
 
 }
 
@@ -290,7 +323,7 @@ nav{
 
 }
 
-/* HEADINGS */
+/* TITLES */
 
 .section-title{
 
@@ -304,7 +337,7 @@ nav{
 
 }
 
-/* CARDS */
+/* SHARED PANELS */
 
 .card,
 .hero,
@@ -361,7 +394,6 @@ nav{
 .logo-game{
 
     width:120px;
-
     height:120px;
 
     object-fit:cover;
@@ -422,9 +454,9 @@ button{
 
     display:inline-block;
 
-    border:none;
-
     cursor:pointer;
+
+    border:none;
 
     text-decoration:none;
 
@@ -559,22 +591,6 @@ button:hover{
 
 }
 
-/* CUSTOM SCROLLBAR */
-
-::-webkit-scrollbar{
-
-    width:10px;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-    background:#16a34a;
-
-    border-radius:999px;
-
-}
-
 /* CHRISTMAS GLOW */
 
 .christmas{
@@ -588,7 +604,7 @@ button:hover{
 
     50%{
 
-        transform:scale(1.04);
+        transform:scale(1.03);
 
         text-shadow:
         0 0 25px #4ade80;
@@ -629,6 +645,22 @@ button:hover{
         translateY(120vh);
 
     }
+
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#16a34a;
+
+    border-radius:999px;
 
 }
 
