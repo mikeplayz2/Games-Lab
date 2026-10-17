@@ -281,6 +281,29 @@ renderer.domElement
 
 };
 
+function shoot(){
+
+    const direction =
+    new THREE.Vector3();
+
+    camera.getWorldDirection(
+        direction
+    );
+
+    bullets.push({
+
+        position:
+        camera.position.clone(),
+
+        velocity:
+        direction.multiplyScalar(
+            1.2
+        )
+
+    });
+
+}
+    
 function animate(){
 
 requestAnimationFrame(
