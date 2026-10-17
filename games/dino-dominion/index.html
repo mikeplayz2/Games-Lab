@@ -1,1 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>🦖 Dino Dominion</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Segoe UI,sans-serif;
+
+    overflow:hidden;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        180deg,
+        #87ceeb 0%,
+        #4ade80 40%,
+        #14532d 100%
+    );
+
+}
+
+canvas{
+    display:block;
+}
+
+/* HUD */
+
+#hud{
+
+    position:fixed;
+
+    top:15px;
+
+    left:15px;
+
+    background:rgba(0,0,0,.35);
+
+    backdrop-filter:blur(15px);
+
+    padding:15px;
+
+    border-radius:18px;
+
+    z-index:10;
+
+}
+
+#hud h2{
+
+    margin-bottom:10px;
+
+}
+
+/* EVOLUTION */
+
+#evolution{
+
+    position:fixed;
+
+    top:15px;
+
+    right:15px;
+
+    padding:15px;
+
+    border-radius:18px;
+
+    background:rgba(0,0,0,.35);
+
+    backdrop-filter:blur(15px);
+
+    z-index:10;
+
+}
+
+/* GAME OVER */
+
+#gameOver{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.90);
+
+    z-index:100;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
+}
+
+button{
+
+    margin-top:20px;
+
+    padding:15px 25px;
+
+    border:none;
+
+    border-radius:15px;
+
+    color:white;
+
+    cursor:pointer;
+
+    background:
+    linear-gradient(
+        135deg,
+        #16a34a,
+        #22c55e
+    );
+
+}
+
+button:hover{
+
+    transform:scale(1.05);
+
+}
+
+</style>
+</head>
+<body>
+
+<div id="hud">
+
+<h2>🦖 Dino Dominion</h2>
+
+<p>⭐ XP: <span id="xp">0</span></p>
+<p>🥩 Food: <span id="food">0</span></p>
+<p>📅 Days: <span id="days">1</span></p>
+
+</div>
+
+<div id="evolution">
+
+<h3>Evolution</h3>
+
+<p id="stage">
+🥚 Hatchling
+</p>
+
+</div>
+
+<div id="gameOver">
+
+<h1>☄️ Extinction!</h1>
+
+<h2>
+You Survived
+<span id="finalDays"></span>
+Days
+</h2>
+
+<button onclick="location.reload()">
+🔄 Play Again
+</button>
+
+</div>
+
+<canvas id="game"></canvas>
+
+<script>
+
+const canvas =
+document.getElementById("game");
+
+const ctx =
+canvas.getContext("2d");
+
+canvas.width =
+window.innerWidth;
+
+canvas.height =
+window.innerHeight;
+
+let xp = 0;
+let food = 0;
+let days = 1;
+
+let gameRunning = true;
+
+const player = {
+
+    x: canvas.width/2,
+    y: canvas.height/2,
+
+    size:40,
+
+    speed:5
+
+};
+
+const foodItems = [];
+const hazards = [];
+
+const keys = {};
+
+document.addEventListener(
+"keydown",
+e => keys[e.key] = true
+);
+
+document.addEventListener(
+"keyup",
+e => keys[e.key] = false
+);
+
+function evolve(){
+
+    const stage =
+    document.getElementById(
+    "stage"
+    );
+
+    if(xp >= 150){
+
+        stage.textContent =
+        "👑 Apex Predator";
+
+    }else if(xp >= 100){
+
+        stage.textContent =
+        "🦕 Dominator";
+
+    }else if(xp >= 60){
+
+        stage.textContent =
+        "🦖 Raptor";
+
+    }else if(xp >= 25){
+
+        stage.textContent =
+        "🦎 Juvenile";
+
+    }else{
+
+        stage.textContent =
+        "🥚 Hatchling";
+
+    }
+
+}
+
+function spawnFood(){
+
+    foodItems.push({
+
+        x:Math.random()*
+        canvas.width,
+
+        y:Math.random()*
+        canvas.height,
+
+        emoji:"🥩"
+
+    });
+
+}
+
+function spawnHazard(){
+
+    const types = [
+
+        "☄️",
+        "🌋",
+        "⚡"
+
+    ];
+
+    hazards.push({
+
+        x:Math.random()*
+        canvas.width,
+
+        y:-50,
+
+        speed:3 + Math.random()*3,
+
+        emoji:
+        types[
+            Math.floor(
+            Math.random()
+            * types.length
+            )
+        ]
+
+    });
+
+}
+
+function update(){
+
+    if(!gameRunning) return;
+
+    if(keys["ArrowLeft"] ||
+       keys["a"]){
+
+        player.x -= player.speed;
+
+    }
+
+    if(keys["
