@@ -801,3 +801,54 @@ button:hover{
     }
 
 }
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(300px,1fr));
+
+    gap:25px;
+
+}
+
+.card{
+
+    padding:25px;
+
+    border-radius:25px;
+
+    background:
+    rgba(255,255,255,.07);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.hero{
+
+    padding:60px 40px;
+
+    margin-bottom:40px;
+
+    border-radius:30px;
+
+    background:
+    rgba(255,255,255,.07);
+
+    backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.icon{
+
+    font-size:2rem;
+
+    margin-bottom:10px;
+
+}
