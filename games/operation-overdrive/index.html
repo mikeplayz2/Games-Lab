@@ -107,6 +107,22 @@ new THREE.PerspectiveCamera(
 
 75,
 
+document.addEventListener(
+"mousedown",
+()=>{
+
+if(
+document.pointerLockElement
+=== renderer.domElement
+){
+
+shoot();
+
+}
+
+}
+);
+    
 window.innerWidth /
 window.innerHeight,
 
