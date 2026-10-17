@@ -217,6 +217,43 @@ for(let i=0;i<20;i++){
 
 }
 
+const enemies = [];
+
+for(let i=0;i<10;i++){
+
+    const enemy =
+    new THREE.Mesh(
+
+        new THREE.BoxGeometry(
+            2,
+            2,
+            2
+        ),
+
+        new THREE.MeshStandardMaterial({
+
+            color:0xff0000
+
+        })
+
+    );
+
+    enemy.position.set(
+
+        (Math.random()-0.5)*80,
+
+        1,
+
+        (Math.random()-0.5)*80
+
+    );
+
+    scene.add(enemy);
+
+    enemies.push(enemy);
+
+}
+    
 camera.position.y = 2;
 
 const keys = {};
