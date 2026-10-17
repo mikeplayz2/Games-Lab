@@ -12,6 +12,7 @@ body{
     margin:0;
     overflow:hidden;
     font-family:Arial,sans-serif;
+    background:black;
 }
 
 canvas{
@@ -24,23 +25,56 @@ canvas{
 
     display:flex;
     flex-direction:column;
+
     align-items:center;
     justify-content:center;
 
-    background:black;
+    background:#000;
+
     color:white;
 
     z-index:1000;
 }
 
-#crosshair{
-    position:fixed;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
+#menu h1{
+    font-size:3rem;
+}
+
+button{
+
+    border:none;
+
+    padding:15px 25px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    background:
+    linear-gradient(
+        135deg,
+        #3b82f6,
+        #9333ea
+    );
 
     color:white;
+}
+
+#crosshair{
+
+    position:fixed;
+
+    left:50%;
+    top:50%;
+
+    transform:
+    translate(-50%,-50%);
+
     font-size:32px;
+
+    color:white;
 
     pointer-events:none;
 
@@ -48,13 +82,16 @@ canvas{
 }
 
 #hud{
+
     position:fixed;
+
     top:20px;
     left:20px;
 
     color:white;
 
-    background:rgba(0,0,0,.4);
+    background:
+    rgba(0,0,0,.45);
 
     padding:15px;
 
@@ -63,15 +100,47 @@ canvas{
     z-index:500;
 }
 
-button{
-    padding:15px 25px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
+#hud p{
+
+    margin:5px 0;
+
+}
+
+#deathScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    rgba(0,0,0,.95);
+
+    color:white;
+
+    display:none;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:5000;
+}
+
+#deathScreen h1{
+
+    font-size:4rem;
+
+}
+
+#deathScreen button{
+
+    margin-top:20px;
+
 }
 
 </style>
-
 </head>
 <body>
 
@@ -79,12 +148,14 @@ button{
 
 <h1>🔫 Operation Overdrive</h1>
 
-<p>WASD to Move</p>
-<p>Mouse to Look</p>
-<p>Left Click to Shoot</p>
+<p>WASD = Move</p>
+<p>Mouse = Look</p>
+<p>Left Click = Shoot</p>
+
+<br>
 
 <button id="startBtn">
-Start Game
+Start Mission
 </button>
 
 </div>
@@ -93,10 +164,29 @@ Start Game
 
 <div id="hud">
 
+<p>☠️ Kills:
+<span id="kills">0</span></p>
+
+<p>❤️ Health:
+<span id="health">100</span></p>
+
+<p>🏆 High Score:
+<span id="highscore">0</span></p>
+
+</div>
+
+<div id="deathScreen">
+
+<h1>☠️ Mission Failed</h1>
+
+<h2>
 Kills:
-<span id="kills">
-0
-</span>
+<span id="finalKills">0</span>
+</h2>
+
+<button onclick="location.reload()">
+Restart
+</button>
 
 </div>
 
@@ -105,22 +195,50 @@ Kills:
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.module.js";
 
 let kills = 0;
+let health = 100;
 
-const scene = new THREE.Scene();
+let highScore =
+
+localStorage.getItem(
+"operationHighScore"
+) || 0;
+
+document.getElementById(
+"highscore"
+).textContent = highScore;
+
+/* Scene */
+
+const scene =
+new THREE.Scene();
 
 scene.background =
-new THREE.Color(0x87ceeb);
+new THREE.Color(
+0x87ceeb
+);
+
+/* Camera */
 
 const camera =
 new THREE.PerspectiveCamera(
+
 75,
-window.innerWidth/window.innerHeight,
+
+window.innerWidth /
+window.innerHeight,
+
 0.1,
+
 1000
+
 );
 
+/* Renderer */
+
 const renderer =
-new THREE.WebGLRenderer();
+new THREE.WebGLRenderer({
+antialias:true
+});
 
 renderer.setSize(
 window.innerWidth,
@@ -131,15 +249,14 @@ document.body.appendChild(
 renderer.domElement
 );
 
-/* LIGHTS */
+/* Lighting */
 
-const ambient =
+scene.add(
 new THREE.AmbientLight(
 0xffffff,
 0.7
+)
 );
-
-scene.add(ambient);
 
 const sun =
 new THREE.DirectionalLight(
@@ -155,7 +272,7 @@ sun.position.set(
 
 scene.add(sun);
 
-/* FLOOR */
+/* World */
 
 const floor =
 new THREE.Mesh(
@@ -178,42 +295,42 @@ floor.rotation.x =
 
 scene.add(floor);
 
-/* WALLS */
+/* Obstacles */
 
-for(let i=0;i<20;i++){
+for(let i=0;i<25;i++){
 
-    const wall =
-    new THREE.Mesh(
+const wall =
+new THREE.Mesh(
 
-        new THREE.BoxGeometry(
-            5,
-            5,
-            5
-        ),
+new THREE.BoxGeometry(
+5,
+5,
+5
+),
 
-        new THREE.MeshStandardMaterial({
+new THREE.MeshStandardMaterial({
 
-            color:0x666666
+color:0x666666
 
-        })
+})
 
-    );
+);
 
-    wall.position.set(
+wall.position.set(
 
-        (Math.random()-0.5)*120,
+(Math.random()-0.5)*120,
 
-        2.5,
+2.5,
 
-        (Math.random()-0.5)*120
+(Math.random()-0.5)*120
 
-    );
+);
 
-    scene.add(wall);
+scene.add(wall);
 
 }
 
-/* PLAYER */
+/* Player */
 
 camera.position.set(
 0,
@@ -221,28 +338,55 @@ camera.position.set(
 10
 );
 
+/* Gun */
+
+const gun =
+new THREE.Mesh(
+
+new THREE.BoxGeometry(
+0.3,
+0.2,
+1
+),
+
+new THREE.MeshStandardMaterial({
+
+color:0x202020
+
+})
+
+);
+
+camera.add(gun);
+
+gun.position.set(
+0.4,
+-0.3,
+-0.8
+);
+
+scene.add(camera);
+
+/* Controls */
+
+let yaw = 0;
+let pitch = 0;
+
 const keys = {};
 
 document.addEventListener(
 "keydown",
 e=>{
-
 keys[e.key.toLowerCase()] = true;
-
 }
 );
 
 document.addEventListener(
 "keyup",
 e=>{
-
 keys[e.key.toLowerCase()] = false;
-
 }
 );
-
-let yaw = 0;
-let pitch = 0;
 
 document.addEventListener(
 "mousemove",
@@ -260,8 +404,7 @@ e.movementX * 0.002;
 pitch -=
 e.movementY * 0.002;
 
-pitch =
-Math.max(
+pitch = Math.max(
 -1.4,
 Math.min(
 1.4,
@@ -274,7 +417,7 @@ pitch
 }
 );
 
-/* BULLETS */
+/* Shooting */
 
 const bullets = [];
 
@@ -317,7 +460,7 @@ shoot();
 }
 );
 
-/* ENEMIES */
+/* Enemies */
 
 const enemies = [];
 
@@ -356,13 +499,13 @@ enemies.push(enemy);
 
 }
 
-for(let i=0;i<10;i++){
+for(let i=0;i<12;i++){
 
 spawnEnemy();
 
 }
 
-/* START */
+/* Start Button */
 
 document.getElementById(
 "startBtn"
@@ -378,7 +521,7 @@ renderer.domElement
 
 };
 
-/* LOOP */
+/* Game Loop */
 
 function animate(){
 
@@ -386,7 +529,7 @@ requestAnimationFrame(
 animate
 );
 
-/* MOVEMENT */
+/* Movement */
 
 const speed = 0.15;
 
@@ -439,7 +582,52 @@ yaw;
 camera.rotation.x =
 pitch;
 
-/* BULLETS */
+/* Enemy AI */
+
+for(let i=enemies.length-1;i>=0;i--){
+
+const enemy =
+enemies[i];
+
+const direction =
+new THREE.Vector3()
+
+.subVectors(
+camera.position,
+enemy.position
+)
+
+.normalize();
+
+enemy.position.add(
+
+direction.multiplyScalar(
+0.03
+)
+
+);
+
+const distance =
+enemy.position.distanceTo(
+camera.position
+);
+
+if(distance < 1.5){
+
+health -= 0.20;
+
+document.getElementById(
+"health"
+).textContent =
+Math.floor(
+health
+);
+
+}
+
+}
+
+/* Bullets */
 
 for(
 let i=bullets.length-1;
@@ -483,8 +671,6 @@ bullet.mesh.position.copy(
 bullet.position
 );
 
-/* HIT DETECTION */
-
 for(
 let e=enemies.length-1;
 e>=0;
@@ -525,6 +711,22 @@ document.getElementById(
 ).textContent =
 kills;
 
+if(kills > highScore){
+
+highScore = kills;
+
+localStorage.setItem(
+"operationHighScore",
+highScore
+);
+
+document.getElementById(
+"highscore"
+).textContent =
+highScore;
+
+}
+
 spawnEnemy();
 
 break;
@@ -535,7 +737,22 @@ break;
 
 }
 
-/* RENDER */
+/* Death */
+
+if(health <= 0){
+
+document.getElementById(
+"finalKills"
+).textContent =
+kills;
+
+document.getElementById(
+"deathScreen"
+).style.display =
+"flex";
+
+return;
+}
 
 renderer.render(
 scene,
@@ -546,7 +763,7 @@ camera
 
 animate();
 
-/* RESIZE */
+/* Resize */
 
 window.addEventListener(
 "resize",
@@ -560,7 +777,8 @@ camera.updateProjectionMatrix();
 
 renderer.setSize(
 window.innerWidth,
-window.innerHeight);
+window.innerHeight
+);
 
 }
 );
