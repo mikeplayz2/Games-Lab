@@ -361,6 +361,65 @@ yaw;
 camera.rotation.x =
 pitch;
 
+for(
+let i = bullets.length-1;
+i >= 0;
+i--
+){
+
+    const bullet =
+    bullets[i];
+
+    if(!bullet.mesh){
+
+        bullet.mesh =
+        new THREE.Mesh(
+
+            new THREE.SphereGeometry(
+                0.08,
+                8,
+                8
+            ),
+
+            new THREE.MeshBasicMaterial({
+
+                color:0xffff00
+
+            })
+
+        );
+
+        scene.add(
+            bullet.mesh
+        );
+
+    }
+
+    bullet.position.add(
+        bullet.velocity
+    );
+
+    bullet.mesh.position.copy(
+        bullet.position
+    );
+
+    if(
+        bullet.position.length()
+        > 300
+    ){
+
+        scene.remove(
+            bullet.mesh
+        );
+
+        bullets.splice(
+            i,
+            1
+        );
+    }
+
+}
+    
 renderer.render(
 scene,
 camera
