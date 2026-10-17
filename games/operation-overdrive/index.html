@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,56 +14,60 @@ body{
     font-family:Arial,sans-serif;
 }
 
+canvas{
+    display:block;
+}
+
 #menu{
-
     position:fixed;
-
     inset:0;
 
     display:flex;
-
     flex-direction:column;
-
     align-items:center;
-
     justify-content:center;
 
-    background:#000;
-
+    background:black;
     color:white;
 
-    z-index:999;
-}
-
-button{
-
-    padding:15px 20px;
-
-    border:none;
-
-    border-radius:12px;
-
-    cursor:pointer;
-
+    z-index:1000;
 }
 
 #crosshair{
-
     position:fixed;
-
     top:50%;
-
     left:50%;
-
-    transform:
-    translate(-50%,-50%);
+    transform:translate(-50%,-50%);
 
     color:white;
-
-    font-size:28px;
+    font-size:32px;
 
     pointer-events:none;
 
+    z-index:500;
+}
+
+#hud{
+    position:fixed;
+    top:20px;
+    left:20px;
+
+    color:white;
+
+    background:rgba(0,0,0,.4);
+
+    padding:15px;
+
+    border-radius:15px;
+
+    z-index:500;
+}
+
+button{
+    padding:15px 25px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
 }
 
 </style>
@@ -76,63 +79,47 @@ button{
 
 <h1>🔫 Operation Overdrive</h1>
 
-<p>WASD to move | Mouse to look</p>
+<p>WASD to Move</p>
+<p>Mouse to Look</p>
+<p>Left Click to Shoot</p>
 
 <button id="startBtn">
-
 Start Game
-
 </button>
 
 </div>
 
-<div id="crosshair">
-+
+<div id="crosshair">+</div>
+
+<div id="hud">
+
+Kills:
+<span id="kills">
+0
+</span>
+
 </div>
 
 <script type="module">
 
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.module.js';
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.module.js";
 
-let scene =
-new THREE.Scene();
+let kills = 0;
+
+const scene = new THREE.Scene();
 
 scene.background =
-new THREE.Color(
-0x87ceeb
-);
+new THREE.Color(0x87ceeb);
 
-let camera =
+const camera =
 new THREE.PerspectiveCamera(
-
 75,
-
-document.addEventListener(
-"mousedown",
-()=>{
-
-if(
-document.pointerLockElement
-=== renderer.domElement
-){
-
-shoot();
-
-}
-
-}
-);
-    
-window.innerWidth /
-window.innerHeight,
-
+window.innerWidth/window.innerHeight,
 0.1,
-
 1000
-
 );
 
-let renderer =
+const renderer =
 new THREE.WebGLRenderer();
 
 renderer.setSize(
@@ -144,33 +131,38 @@ document.body.appendChild(
 renderer.domElement
 );
 
-const light =
+/* LIGHTS */
+
+const ambient =
+new THREE.AmbientLight(
+0xffffff,
+0.7
+);
+
+scene.add(ambient);
+
+const sun =
 new THREE.DirectionalLight(
 0xffffff,
 1
 );
 
-light.position.set(
-5,
+sun.position.set(
 10,
-5
+20,
+10
 );
 
-scene.add(light);
+scene.add(sun);
 
-scene.add(
-new THREE.AmbientLight(
-0xffffff,
-0.5
-)
-);
+/* FLOOR */
 
 const floor =
 new THREE.Mesh(
 
 new THREE.PlaneGeometry(
-200,
-200
+300,
+300
 ),
 
 new THREE.MeshStandardMaterial({
@@ -186,30 +178,34 @@ floor.rotation.x =
 
 scene.add(floor);
 
+/* WALLS */
+
 for(let i=0;i<20;i++){
 
     const wall =
     new THREE.Mesh(
 
-    new THREE.BoxGeometry(
-    5,5,5
-    ),
+        new THREE.BoxGeometry(
+            5,
+            5,
+            5
+        ),
 
-    new THREE.MeshStandardMaterial({
+        new THREE.MeshStandardMaterial({
 
-    color:0x666666
+            color:0x666666
 
-    })
+        })
 
     );
 
     wall.position.set(
 
-        (Math.random()-0.5)*100,
+        (Math.random()-0.5)*120,
 
         2.5,
 
-        (Math.random()-0.5)*100
+        (Math.random()-0.5)*120
 
     );
 
@@ -217,65 +213,39 @@ for(let i=0;i<20;i++){
 
 }
 
-const enemies = [];
+/* PLAYER */
 
-for(let i=0;i<10;i++){
-
-    const enemy =
-    new THREE.Mesh(
-
-        new THREE.BoxGeometry(
-            2,
-            2,
-            2
-        ),
-
-        new THREE.MeshStandardMaterial({
-
-            color:0xff0000
-
-        })
-
-    );
-
-    enemy.position.set(
-
-        (Math.random()-0.5)*80,
-
-        1,
-
-        (Math.random()-0.5)*80
-
-    );
-
-    scene.add(enemy);
-
-    enemies.push(enemy);
-
-}
-    
-camera.position.y = 2;
+camera.position.set(
+0,
+2,
+10
+);
 
 const keys = {};
-const bullets = [];
 
 document.addEventListener(
-'keydown',
-e=>keys[e.key.toLowerCase()]
-=true
+"keydown",
+e=>{
+
+keys[e.key.toLowerCase()] = true;
+
+}
 );
 
 document.addEventListener(
-'keyup',
-e=>keys[e.key.toLowerCase()]
-=false
+"keyup",
+e=>{
+
+keys[e.key.toLowerCase()] = false;
+
+}
 );
 
 let yaw = 0;
 let pitch = 0;
 
 document.addEventListener(
-'mousemove',
+"mousemove",
 
 e=>{
 
@@ -292,9 +262,9 @@ e.movementY * 0.002;
 
 pitch =
 Math.max(
--1.5,
+-1.4,
 Math.min(
-1.5,
+1.4,
 pitch
 )
 );
@@ -303,6 +273,96 @@ pitch
 
 }
 );
+
+/* BULLETS */
+
+const bullets = [];
+
+function shoot(){
+
+const direction =
+new THREE.Vector3();
+
+camera.getWorldDirection(
+direction
+);
+
+bullets.push({
+
+position:
+camera.position.clone(),
+
+velocity:
+direction.multiplyScalar(
+1.2
+)
+
+});
+
+}
+
+document.addEventListener(
+"mousedown",
+()=>{
+
+if(
+document.pointerLockElement
+=== renderer.domElement
+){
+
+shoot();
+
+}
+
+}
+);
+
+/* ENEMIES */
+
+const enemies = [];
+
+function spawnEnemy(){
+
+const enemy =
+new THREE.Mesh(
+
+new THREE.BoxGeometry(
+2,
+2,
+2
+),
+
+new THREE.MeshStandardMaterial({
+
+color:0xff0000
+
+})
+
+);
+
+enemy.position.set(
+
+(Math.random()-0.5)*100,
+
+1,
+
+(Math.random()-0.5)*100
+
+);
+
+scene.add(enemy);
+
+enemies.push(enemy);
+
+}
+
+for(let i=0;i<10;i++){
+
+spawnEnemy();
+
+}
+
+/* START */
 
 document.getElementById(
 "startBtn"
@@ -318,36 +378,17 @@ renderer.domElement
 
 };
 
-function shoot(){
+/* LOOP */
 
-    const direction =
-    new THREE.Vector3();
-
-    camera.getWorldDirection(
-        direction
-    );
-
-    bullets.push({
-
-        position:
-        camera.position.clone(),
-
-        velocity:
-        direction.multiplyScalar(
-            1.2
-        )
-
-    });
-
-}
-    
 function animate(){
 
 requestAnimationFrame(
 animate
 );
 
-let speed = 0.15;
+/* MOVEMENT */
+
+const speed = 0.15;
 
 if(keys["w"]){
 
@@ -398,65 +439,104 @@ yaw;
 camera.rotation.x =
 pitch;
 
+/* BULLETS */
+
 for(
-let i = bullets.length-1;
-i >= 0;
+let i=bullets.length-1;
+i>=0;
 i--
 ){
 
-    const bullet =
-    bullets[i];
+const bullet =
+bullets[i];
 
-    if(!bullet.mesh){
+if(!bullet.mesh){
 
-        bullet.mesh =
-        new THREE.Mesh(
+bullet.mesh =
+new THREE.Mesh(
 
-            new THREE.SphereGeometry(
-                0.08,
-                8,
-                8
-            ),
+new THREE.SphereGeometry(
+0.1,
+8,
+8
+),
 
-            new THREE.MeshBasicMaterial({
+new THREE.MeshBasicMaterial({
 
-                color:0xffff00
+color:0xffff00
 
-            })
+})
 
-        );
+);
 
-        scene.add(
-            bullet.mesh
-        );
-
-    }
-
-    bullet.position.add(
-        bullet.velocity
-    );
-
-    bullet.mesh.position.copy(
-        bullet.position
-    );
-
-    if(
-        bullet.position.length()
-        > 300
-    ){
-
-        scene.remove(
-            bullet.mesh
-        );
-
-        bullets.splice(
-            i,
-            1
-        );
-    }
+scene.add(
+bullet.mesh
+);
 
 }
-    
+
+bullet.position.add(
+bullet.velocity
+);
+
+bullet.mesh.position.copy(
+bullet.position
+);
+
+/* HIT DETECTION */
+
+for(
+let e=enemies.length-1;
+e>=0;
+e--
+){
+
+const enemy =
+enemies[e];
+
+if(
+
+bullet.position.distanceTo(
+enemy.position
+) < 1.5
+
+){
+
+scene.remove(enemy);
+
+enemies.splice(
+e,
+1
+);
+
+scene.remove(
+bullet.mesh
+);
+
+bullets.splice(
+i,
+1
+);
+
+kills++;
+
+document.getElementById(
+"kills"
+).textContent =
+kills;
+
+spawnEnemy();
+
+break;
+
+}
+
+}
+
+}
+
+/* RENDER */
+
 renderer.render(
 scene,
 camera
@@ -466,8 +546,10 @@ camera
 
 animate();
 
+/* RESIZE */
+
 window.addEventListener(
-'resize',
+"resize",
 ()=>{
 
 camera.aspect =
@@ -478,8 +560,7 @@ camera.updateProjectionMatrix();
 
 renderer.setSize(
 window.innerWidth,
-window.innerHeight
-);
+window.innerHeight);
 
 }
 );
