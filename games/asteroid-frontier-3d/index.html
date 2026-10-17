@@ -1,1 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>🚀 Asteroid Frontier 3D</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    overflow:hidden;
+
+    font-family:Segoe UI,sans-serif;
+
+    background:
+    radial-gradient(circle,#111827,#020617);
+
+    color:white;
+
+}
+
+canvas{
+    display:block;
+}
+
+#hud{
+
+    position:fixed;
+
+    top:20px;
+
+    left:20px;
+
+    z-index:100;
+
+    background:rgba(0,0,0,.35);
+
+    backdrop-filter:blur(15px);
+
+    padding:15px;
+
+    border-radius:18px;
+
+}
+
+#hud h2{
+
+    margin-bottom:10px;
+
+}
+
+#gameOver{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.9);
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
+
+    z-index:999;
+}
+
+button{
+
+    margin-top:20px;
+
+    padding:14px 22px;
+
+    border:none;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #3b82f6,
+        #9333ea
+    );
+
+}
+
+</style>
+</head>
+<body>
+
+<div id="hud">
+
+<h2>🚀 Asteroid Frontier 3D</h2>
+
+<p>💎 Crystals: <span id="score">0</span></p>
+<p>☄️ Asteroids Dodged: <span id="dodged">0</span></p>
+
+</div>
+
+<div id="gameOver">
+
+<h1>☠️ Ship Destroyed</h1>
+
+<h2>💎 Collected: <span id="finalScore">0</span></h2>
+
+<button onclick="location.reload()">
+Play Again
+</button>
+
+</div>
+
+<canvas id="game"></canvas>
+
+<script>
+
+const canvas =
+document.getElementById("game");
+
+const ctx =
+canvas.getContext("2d");
+
+canvas.width =
+window.innerWidth;
+
+canvas.height =
+window.innerHeight;
+
+let score = 0;
+let dodged = 0;
+
+const ship = {
+
+    x: canvas.width / 2,
+    y: canvas.height - 120,
+
+    width: 40,
+    height: 40,
+
+    speed: 7
+
+};
+
+const asteroids = [];
+const crystals = [];
+
+const keys = {};
+
+document.addEventListener(
+"keydown",
+e => {
+
+    keys[e.key] = true;
+
+}
+);
+
+document.addEventListener(
+"keyup",
+e => {
+
+    keys[e.key] = false;
+
+}
+);
+
+function spawnAsteroid(){
+
+    asteroids.push({
+
+        x:
+        Math.random() *
+        (canvas.width - 50),
+
+        y:-60,
+
+        size:
+        30 + Math.random()*40,
+
+        speed:
+        4 + Math.random()*3
+
+    });
+
+}
+
+function spawnCrystal(){
+
+    crystals.push({
+
+        x:
+        Math.random() *
+        (canvas.width - 30),
+
+        y:-40,
+
+        size:20,
+
+        speed:4
+
+    });
+
+}
+
+function update(){
+
+    if(keys["ArrowLeft"] ||
+       keys["a"]){
+
+        ship.x -= ship.speed;
+
+    }
+
+    if(keys["ArrowRight"] ||
+       keys["d"]){
+
+        ship.x += ship.speed;
+
+    }
+
+    ship.x =
+    Math.max(
+        0,
+        Math.min(
+            canvas.width -
+            ship.width,
+            ship.x
+        )
+    );
+
+    for(let i=asteroids.length-1;i>=0;i--){
+
+        let a =
+        asteroids[i];
+
+        a.y += a.speed;
+
+        if(a.y > canvas.height){
+
+            asteroids.splice(i,1);
+
+            dodged++;
+
+        }
+
+        if(
+
+            ship.x <
+            a.x + a.size &&
+
+            ship.x + ship.width >
+            a.x &&
+
+            ship.y <
+            a.y + a.size &&
+
+            ship.y + ship.height >
+            a.y
+
+        ){
+
+            endGame();
+
+        }
+
+    }
+
+    for(let i=crystals.length-1;i>=0;i--){
+
+        let c =
+        crystals[i];
+
+        c.y += c.speed;
+
+        if(c.y > canvas.height){
+
+            crystals.splice(i,1);
+
+        }
+
+        if(
+
+            ship.x <
+            c.x + c.size &&
+
+            ship.x + ship.width >
+            c.x &&
+
+            ship.y <
+            c.y + c.size &&
+
+            ship.y + ship.height >
+            c.y
+
+        ){
+
+            crystals.splice(i,1);
+
+            score++;
+
+        }
+
+    }
+
+    document.getElementById(
+    "score"
+    ).textContent =
+    score;
+
+    document.getElementById(
+    "dodged"
+    ).textContent =
+    dodged;
+
+}
+
+function draw(){
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    for(let i=0;i<100;i++){
+
+        ctx.fillStyle =
+        "white";
+
+        ctx.fillRect(
+
+            (i * 157) %
+            canvas.width,
+
+            (i * 97 +
+            Date.now()/50)
+            %
+            canvas.height,
+
+            2,
+            2
+
+        );
+
+    }
+
+    ctx.fillStyle =
+    "#60a5fa";
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        ship.x + 20,
+        ship.y
+    );
+
+    ctx.lineTo(
+        ship.x,
+        ship.y + 40
+    );
+
+    ctx.lineTo(
+        ship.x + 40,
+        ship.y + 40
+    );
+
+    ctx.fill();
+
+    for(let a of asteroids){
+
+        ctx.fillStyle =
+        "#9ca3af";
+
+        ctx.beginPath();
+
+        ctx.arc(
+
+            a.x,
+            a.y,
+
+            a.size/2,
+
+            0,
+
+            Math.PI*2
+
+        );
+
+        ctx.fill();
+
+    }
+
+    for(let c of crystals){
+
+        ctx.fillStyle =
+        "#22d3ee";
+
+        ctx.beginPath();
+
+        ctx.arc(
+
+            c.x,
+            c.y,
+
+            c.size/2,
+
+            0,
+
+            Math.PI*2
+
+        );
+
+        ctx.fill();
+
+    }
+
+}
+
+function gameLoop(){
+
+    update();
+
+    draw();
+
+    requestAnimationFrame(
+        gameLoop
+    );
+
+}
+
+function endGame(){
+
+    document.getElementById(
+    "finalScore"
+    ).textContent =
+    score;
+
+    document.getElementById(
+    "gameOver"
+    ).style.display =
+    "flex";
+
+    throw new Error(
+        "Game Over"
+    );
+
+}
+
+setInterval(
+spawnAsteroid,
+800
+);
+
+setInterval(
+spawnCrystal,
+2500
+);
+
+gameLoop();
+
+</script>
+
+</body>
+</html>
