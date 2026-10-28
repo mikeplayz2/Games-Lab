@@ -1,255 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>🎮 Games Library | Games Lab</title>
-
-<link rel="icon" href="assets/logo.png">
-<link rel="stylesheet" href="css/default.css">
-
-<style>
-
-body{
-    padding-bottom:120px;
-    animation:fadeIn .5s ease;
-}
-
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(15px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.games-hero{
-    text-align:center;
-    padding:60px 30px;
-}
-
-.games-hero h1{
-    font-size:4rem;
-    margin-bottom:15px;
-}
-
-.games-hero p{
-    max-width:850px;
-    margin:auto;
-    opacity:.9;
-    line-height:1.8;
-}
-
-.search-modern{
-    margin-top:30px;
-}
-
-.search-modern input{
-    max-width:700px;
-    width:100%;
-}
-
-.featured-game{
-    display:flex;
-    gap:30px;
-    align-items:center;
-    padding:30px;
-    margin-bottom:35px;
-}
-
-.featured-game img{
-    width:180px;
-    height:180px;
-    border-radius:25px;
-    object-fit:cover;
-}
-
-.featured-content{
-    flex:1;
-}
-
-.featured-content h2{
-    margin:15px 0;
-    color:var(--primary-light);
-}
-
-.game{
-    transition:.25s;
-}
-
-.game:hover{
-    transform:translateY(-8px);
-}
-
-.dock{
-    position:fixed;
-    bottom:25px;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:9999;
-
-    display:flex;
-    gap:10px;
-
-    padding:12px;
-
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(30px);
-    -webkit-backdrop-filter:blur(30px);
-
-    border:1px solid rgba(255,255,255,.12);
-
-    border-radius:999px;
-
-    box-shadow:
-    0 15px 45px rgba(0,0,0,.3),
-    0 0 25px rgba(59,130,246,.2);
-}
-
-.dock a{
-    width:52px;
-    height:52px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-decoration:none;
-
-    color:white;
-
-    font-size:1.4rem;
-
-    border-radius:50%;
-
-    transition:.25s ease;
-}
-
-.dock a:hover{
-    transform:translateY(-5px) scale(1.1);
-    background:rgba(255,255,255,.1);
-}
-
-.dock .active{
-    background:rgba(255,255,255,.18);
-
-    box-shadow:
-    0 0 20px rgba(147,197,253,.5);
-
-    transform:translateY(-5px);
-}
-
-@media(max-width:900px){
-
-    .games-hero h1{
-        font-size:2.5rem;
-    }
-
-    .featured-game{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .featured-game img{
-        width:140px;
-        height:140px;
-    }
-
-    .dock{
-        width:95%;
-        justify-content:space-around;
-    }
-}
-
-</style>
-
-</head>
-
 <body>
 
 <div class="container">
 
-<section class="games-hero">
+<div class="hero">
 
 <div class="banner-badge">
-🚀 GAMES LAB 2.0
+🎮 GAMES LAB 2.0
 </div>
 
-<h1>🎮 Games Library</h1>
+<h1>Games Library</h1>
 
 <p>
-Discover Games Lab Originals, community favourites,
-browser classics and experimental projects.
-Play instantly, discover something new and support
-indie creators from around the world.
+Discover Games Lab Originals, community favourites and browser game classics.
+Play instantly, discover something new and support creators from around the world.
 </p>
 
-<div class="search-modern">
+</div>
+
+<div class="stats-row">
+
+<div class="stat">🎮 12 Games</div>
+<div class="stat">🚀 Active Development</div>
+<div class="stat">🌎 Community Driven</div>
+<div class="stat">🆕 Weekly Updates</div>
+
+</div>
+
+<div class="search">
 
 <input
 type="text"
-placeholder="🔎 Search Games (Coming Soon)">
+placeholder="🔎 Search Games">
 
 </div>
 
-</section>
+<div class="banner">
 
-<section class="featured-game card">
-
-<img src="assets/logo.png">
-
-<div class="featured-content">
-
-<div class="badge featured">
+<div class="banner-badge">
 ⭐ FEATURED ORIGINAL
 </div>
 
 <h2>🦖 Dino Dominion</h2>
 
 <p>
-Explore a prehistoric world filled with danger,
-rare fossils, food chains and evolving dinosaurs.
-Survive, level up and dominate the ecosystem.
+Explore a dangerous prehistoric world filled with predators, fossils,
+food chains and evolving dinosaurs. Survive, level up and become the apex predator.
 </p>
 
 <br>
 
-<a href="games/dino-dominion" class="play">
+<a href="games/dino-dominion" class="button">
 🎮 Play Now
 </a>
 
 </div>
 
-</section>
-
-<div class="stats-row">
-
-<div class="stat">
-🎮 Growing Library
-</div>
-
-<div class="stat">
-🚀 Active Development
-</div>
-
-<div class="stat">
-🌎 Community Driven
-</div>
-
-<div class="stat">
-🆕 Weekly Updates
-</div>
-
-</div>
-
 <h2 class="section-title">
-🔥 Games Lab Originals
+🛠️ Games Lab Originals
 </h2>
+
+<p style="margin-bottom:25px;opacity:.8;">
+Official titles developed and published by Games Lab.
+</p>
 
 <div class="game-list">
 
@@ -259,26 +71,20 @@ Survive, level up and dominate the ecosystem.
 
 <div class="game-content">
 
-<div class="badge featured">
-🦖 ORIGINAL
-</div>
+<div class="badge featured">🦖 ORIGINAL</div>
 
 <h3>🦖 Dino Dominion</h3>
 
-<div class="creator">
-By Games Lab
-</div>
+<div class="creator">By Games Lab</div>
 
 <p>
-Survive deadly predators, gather resources
-and evolve through multiple dinosaur stages.
+Explore a dangerous prehistoric world, evolve powerful dinosaurs
+and survive against nature itself.
 </p>
 
 </div>
 
-<a href="games/dino-dominion" class="play">
-Play
-</a>
+<a href="games/dino-dominion" class="play">Play</a>
 
 </div>
 
@@ -288,67 +94,107 @@ Play
 
 <div class="game-content">
 
-<div class="badge featured">
-⭐ FEATURED
-</div>
+<div class="badge featured">⭐ FEATURED</div>
 
-<h3>💰 Gold Empire</h3>
+<h3>💰 Gold Empire Clicker</h3>
 
-<div class="creator">
-By Michael
-</div>
+<div class="creator">By Michael</div>
 
 <p>
-Build a massive gold empire, unlock upgrades
-and become the wealthiest clicker tycoon.
+Build a massive empire, unlock upgrades and become unbelievably rich.
 </p>
 
 </div>
 
-<a href="games/gold-empire/" class="play">
-Play
-</a>
-
-</div>
-
-<div class="compete
-for the highest score.
-</p>
-
-</div>
-
-games/ghost-hunter/
-Play
-</a>
+<a href="games/gold-empire/" class="play">Play</a>
 
 </div>
 
 <div class="game">
 
-assets/logo.png
+<img src="assets/logo.png" class="logo-game">
 
 <div class="game-content">
 
-<div class="badge">
-🚂 ADVENTURE
-</div>
+<div class="badge">🆕 NEW</div>
 
-<h3>🚂 Haunted Railway</h3>
+<h3>👻 Ghost Hunter</h3>
 
-<div class="creator">
-By Games Lab
-</div>
+<div class="creator">By Games Lab</div>
 
 <p>
-Control a haunted railway while surviving
-mysterious nighttime events.
+Capture ghosts before they escape and climb the leaderboards.
 </p>
 
 </div>
 
-games/haunted-railway/
-Play
-</a>
+<a href="games/ghost-hunter/" class="play">Play</a>
+
+</div>
+
+<div class="game">
+
+<img src="assets/logo.png" class="logo-game">
+
+<div class="game-content">
+
+<div class="badge">🚂 ADVENTURE</div>
+
+<h3>🚂 Haunted Railway</h3>
+
+<div class="creator">By Games Lab</div>
+
+<p>
+Control a haunted railway through mysterious nighttime events.
+</p>
+
+</div>
+
+<a href="games/haunted-railway/" class="play">Play</a>
+
+</div>
+
+<div class="game">
+
+<img src="assets/logo.png" class="logo-game">
+
+<div class="game-content">
+
+<div class="badge featured">⭐ FEATURED</div>
+
+<h3>🚀 Asteroid Frontier 3D</h3>
+
+<div class="creator">By Horizon Games Interactive</div>
+
+<p>
+Blast through asteroid fields and survive the frontier of space.
+</p>
+
+</div>
+
+<a href="games/asteroid-frontier-3d/" class="play">Play</a>
+
+</div>
+
+<div class="game">
+
+<img src="assets/logo.png" class="logo-game">
+
+<div class="game-content">
+
+<div class="badge">👑 STRATEGY</div>
+
+<h3>👑 Kingdom Siege</h3>
+
+<div class="creator">By Games Lab</div>
+
+<p>
+Build, defend and expand your kingdom against endless attacks.
+</p>
+
+</div>
+
+<a href="games/kingdom-siege/" class="play">Play</a>
 
 </div>
 
@@ -356,12 +202,10 @@ Play
 
 <div class="community">
 
-<h2>
-🌎 Community Picks
-</h2>
+<h2>🌎 Community Games</h2>
 
 <p>
-Popular browser games chosen by the Games Lab community.
+Popular browser games and experiences from creators across the internet.
 </p>
 
 </div>
@@ -370,30 +214,23 @@ Popular browser games chosen by the Games Lab community.
 
 <div class="game">
 
-assets/pokemon.png
+<img src="assets/pokemon.png" class="logo-game">
 
 <div class="game-content">
 
-<div class="badge featured">
-🔥 POPULAR
-</div>
+<div class="badge featured">🔥 POPULAR</div>
 
-<h3>
-⚡ PokéRogue
-</h3>
+<h3>⚡ PokéRogue</h3>
 
-<div class="creator">
-By Pagefault Games
-</div>
+<div class="creator">By Pagefault Games</div>
 
 <p>
-A Pokémon roguelike adventure with endless runs,
-random encounters and permanent progression.
+The hit Pokémon roguelike featuring endless runs and progression.
 </p>
 
 </div>
 
-<a href="https://pokerogue.net/" class="play" target="_blank">
+<a href="https://pokerogue.net/" target="_blank" class="play">
 Play
 </a>
 
@@ -401,179 +238,122 @@ Play
 
 <div class="game">
 
-assets/slope.png
+<img src="assets/slope.png" class="logo-game">
 
 <div class="game-content">
 
-<div class="badge">
-🏔️ CLASSIC
-</div>
+<div class="badge">🏔️ CLASSIC</div>
 
-<h3>
-⛷️ Slope
-</h3>
+<h3>⛷️ Slope</h3>
 
-<div class="creator">
-Community Favourite
-</div>
+<div class="creator">Community Favourite</div>
 
 <p>
-Race down an endless slope and dodge obstacles
-at increasing speed.
+Race down an endless track while avoiding deadly obstacles.
 </p>
 
 </div>
 
-games/slope/
-Play
-</a>
+<a href="games/slope/" class="play">Play</a>
 
 </div>
 
 <div class="game">
 
-assets/snowrider.png
+<img src="assets/snowrider.png" class="logo-game">
 
 <div class="game-content">
 
-<div class="badge">
-❄️ WINTER
-</div>
+<div class="badge">❄️ WINTER</div>
 
-<h3>
-❄️ Snow Rider 3D
-</h3>
+<h3>❄️ Snow Rider 3D</h3>
 
-<div class="creator">
-By Saber Interactive
-</div>
+<div class="creator">By Saber Interactive</div>
 
 <p>
-Dodge obstacles, collect presents and survive
-the ultimate snowy run.
+Collect gifts and survive the ultimate snowy challenge.
 </p>
 
 </div>
 
-games/snow-runner-3d/
-Play
-</a>
+<a href="games/snow-runner-3d/" class="play">Play</a>
 
 </div>
 
 <div class="game">
 
-games/dino-game/images/dino.png
+<img src="games/dino-game/images/dino.png" class="logo-game">
 
 <div class="game-content">
 
-<div class="badge featured">
-🦖 CHROME
-</div>
+<div class="badge featured">🦖 CHROME</div>
 
-<h3>
-🦖 Dinosaur Game
-</h3>
+<h3>🦖 Chrome Dinosaur Game</h3>
 
-<div class="creator">
-By Google Chrome
-</div>
+<div class="creator">By Google Chrome</div>
 
 <p>
-The classic offline runner game.
-Jump over cacti and survive as long as possible.
+The legendary offline runner game loved across the world.
 </p>
 
 </div>
 
-games/dino-game
-Play
-</a>
+<a href="games/dino-game" class="play">Play</a>
 
 </div>
 
 <div class="game">
 
-assets/getaway.png
+<img src="assets/getaway.png" class="logo-game">
 
 <div class="game-content">
 
-<div class="badge">
-👥 2 PLAYER
-</div>
+<div class="badge">👥 2 PLAYER</div>
 
-<h3>
-🔫 Getaway Shootout
-</h3>
+<h3>🔫 Getaway Shootout</h3>
 
-<div class="creator">
-Multiplayer Favourite
-</div>
+<div class="creator">Community Favourite</div>
 
 <p>
-Race, shoot and jump your way to victory
-against friends.
+Compete against your friends in chaotic multiplayer races.
 </p>
 
 </div>
 
-games/getaway-shootout/
-Play
-</a>
+<a href="games/getaway-shootout/" class="play">Play</a>
 
 </div>
 
 <div class="game">
 
-assets/infinitecraft.png
+<img src="assets/infinitecraft.png" class="logo-game">
 
 <div class="game-content">
 
-<div class="badge">
-📚 EDUCATIONAL
-</div>
+<div class="badge">📚 EDUCATIONAL</div>
 
-<h3>
-♾️ Infinite Craft
-</h3>
+<h3>♾️ Infinite Craft</h3>
 
-<div class="creator">
-By Neal.fun
-</div>
+<div class="creator">By Neal.fun</div>
 
 <p>
-Combine elements and discover endless creations
-through experimentation.
+Mix elements together and discover endless combinations.
 </p>
 
 </div>
 
-games/infinite-craft/
-Play
-</a>
+<a href="games/infinite-craft/" class="play">Play</a>
 
 </div>
 
 </div>
 
-<footer class="footer">
+<div class="footer">
 
 🎮 Games Lab • Play. Create. Discover.
 
-</footer>
-
 </div>
-
-<div class="dock">
-
-<a href="index.html">🏠</a>
-<a href="games.html" class="active">🎮</a>
-<a href="news.html">📰</a>
-<a href="changelog.html">🧪</a>
-<a href="wiki.html">📚</a>
-<a href="publish.html">📤</a>
 
 </div>
 
 </body>
-</html>
